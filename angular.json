@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "movie-collection-app"
+  "defaultProject": "movie-collection-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
