@@ -2,10 +2,14 @@
   "name": "movie-collection-app",
   "version": "0.0.0",
   "scripts": {
+    "clean:artifacts": "rimraf dist",
+    "start": "npm run serve:dev",
+    "serve:dev": "ng serve --hmr=true --progress=true --hmrWarning=false --sourceMap=true --vendorChunk=true --watch=true",
+    "build": "ng build",
+    "prebuild:production": "npm run clean:artifacts",
+    "build:production": "ng build --configuration=production",
     "ng": "ng",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
-    "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -26,14 +30,20 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^9.1.0",
     "@angular-devkit/build-angular": "~0.901.0",
     "@angular/cli": "~9.1.0",
     "@angular/compiler-cli": "~9.1.0",
     "@angular/language-service": "~9.1.0",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "autoprefixer": "^9.8.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "codelyzer": "^5.1.2",
+    "cssnano": "^4.1.10",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "husky": "4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -43,12 +53,16 @@
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "lint-staged": "10.2.7",
+    "postcss-pxtorem": "^5.1.1",
     "prettier": "2.0.5",
     "protractor": "~5.4.3",
+    "rimraf": "^3.0.2",
+    "source-map-explorer": "^2.4.2",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "webpack-notifier": "^1.8.0"
   },
   "husky": {
     "hooks": {
