@@ -5,12 +5,8 @@ import { MovieRoutingModule } from './movie-routing.module';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
-
 @NgModule({
   declarations: [MovieListComponent, MovieDetailComponent],
-  imports: [
-    CommonModule,
-    MovieRoutingModule
-  ]
+  imports: [CommonModule, MovieRoutingModule]
 })
-export class MovieModule { }
+export class MovieModule {}
