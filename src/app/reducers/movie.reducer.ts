@@ -1,6 +1,6 @@
-import { Movies } from '../types/movie.type';
 import { Action, createReducer, on } from '@ngrx/store';
-import { loadMoviesSuccess, loadMoviesFailure, loadMovies } from '../actions/movie/movie.actions';
+import { loadMovies, loadMoviesFailure, loadMoviesSuccess } from '../actions/movie/movie.actions';
+import { Movies } from '../types/movie.type';
 
 export interface MovieState {
   data: Movies;
@@ -17,7 +17,7 @@ const initialMovieState: MovieState = {
 const movieReducer = createReducer(
   initialMovieState,
   on(loadMovies, state => ({ ...state, loading: true })),
-  on(loadMoviesFailure, state => ({ ...state, error: 'Error while loading movies', loading: false })),
+  on(loadMoviesFailure, state => ({ ...state, loading: false })),
   on(loadMoviesSuccess, state => ({ data: state.data, error: null, loading: false }))
 );
 
