@@ -1,4 +1,4 @@
-import * as fromMovie from './movie.actions';
+import * as fromMovie from './movies.actions';
 
 describe('loadMovies', () => {
   it('should return an action', () => {

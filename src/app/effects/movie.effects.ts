@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadMovies, MovieActions } from '../actions/movie/movie.actions';
-import { catchError, map, mergeMap } from 'rxjs/operators';
-import { MovieService } from '../services/movie/movie.service';
+import { loadMovies, filterMovies, MoviesActionType } from '../actions/movies.actions';
+import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
+import { MovieService } from '../services/movie.service';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -10,12 +10,25 @@ export class MovieEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadMovies),
-      mergeMap(() =>
-        this.movieService.getMovies().pipe(
-          map(movies => ({ type: MovieActions.loadMoviesSuccess, data: movies })),
-          catchError(() => of({ type: MovieActions.loadMoviesFailure }))
-        )
-      )
+      mergeMap(() => {
+        return this.movieService.getMovies().pipe(
+          map(movies => ({ type: MoviesActionType.loadMoviesSuccess, payload: movies })),
+          catchError(() => of({ type: MoviesActionType.loadMoviesFailure, payload: 'Load movie error' }))
+        );
+      })
+    )
+  );
+
+  filterMovies$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(filterMovies),
+      map(action => action.payload),
+      switchMap(payload => {
+        return this.movieService.getFilteredMovies(payload.text, payload.genres).pipe(
+          map(movies => ({ type: MoviesActionType.filterMoviesSuccess, payload: movies })),
+          catchError(() => of({ type: MoviesActionType.filterMoviesFailure, payload: 'Filter error' }))
+        );
+      })
     )
   );
 

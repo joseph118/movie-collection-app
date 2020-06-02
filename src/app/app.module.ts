@@ -9,9 +9,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from './effects/movie.effects';
+import { HeaderComponent } from './layout/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,7 +25,8 @@ import { MovieEffects } from './effects/movie.effects';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forFeature([MovieEffects])
+    EffectsModule.forRoot([MovieEffects]),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

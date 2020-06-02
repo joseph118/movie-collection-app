@@ -7,8 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'movie',
-    loadChildren: () => import('./pages/movie/movie.module').then(m => m.MovieModule)
+    path: 'movies',
+    loadChildren: () => import('./pages/movies/movies.module').then(m => m.MoviesModule)
   },
   {
     path: '**',
@@ -18,7 +18,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top'
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

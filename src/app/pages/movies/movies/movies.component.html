@@ -1,0 +1,14 @@
+<div *ngFor="let movie of movies$ | async">
+  <div class="movie">
+    <div class="top-container">
+      <img [src]="movie.img" />
+      <div class="rating" [innerText]="movie.rate"></div>
+      <div class="length" [innerText]="movie.length"></div>
+      <div class="genres">{{ movie.genres | json }}</div>
+    </div>
+    <div class="bottom-container">
+      <h1 class="name" [innerText]="movie.name"></h1>
+      <h2 class="description" [innerText]="movie.description"></h2>
+    </div>
+  </div>
+</div>

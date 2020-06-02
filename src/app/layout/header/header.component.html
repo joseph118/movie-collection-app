@@ -1,0 +1,13 @@
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a class="link" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="link" routerLink="/movies" routerLinkActive="active">Movies</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="input-container">
+    <input type="search" (search)="onSearch($event)" />
+  </div>
+</header>
