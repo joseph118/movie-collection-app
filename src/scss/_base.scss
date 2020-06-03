@@ -1,13 +1,14 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  background: $gradient4;
-  min-height: 100vh;
 
   body {
     color: $color1;
     margin: 0;
     font-family: 'Titillium Web', sans-serif;
+
+    background: $gradient4;
+    min-height: 100vh;
   }
 
   a {
