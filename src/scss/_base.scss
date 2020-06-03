@@ -1,13 +1,18 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  background: $gradient4;
+  min-height: 100vh;
 
   body {
-    background-color: $color5;
-
     color: $color1;
     margin: 0;
     font-family: 'Titillium Web', sans-serif;
+  }
+
+  a {
+    color: $color2;
+    text-decoration: none;
   }
 
   @include media-breakpoint-down(tn) {
