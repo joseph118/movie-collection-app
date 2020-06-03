@@ -1,3 +1,13 @@
+<div class="filter-container">
+  <ul>
+    <li *ngFor="let genre of genres">
+      <a class="genre" [ngClass]="{ selected: genre.selected }" (click)="onGenreClick(genre)">
+        <span class="text" [innerText]="genre.value"></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
 <div *ngFor="let movie of movies$ | async">
   <app-video-card [movie]="movie"></app-video-card>
 </div>

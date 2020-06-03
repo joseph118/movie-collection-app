@@ -22,7 +22,7 @@ export class FiltersEffects {
         this.router.navigate(['/movies'], {
           queryParams: {
             ...(text ? { text } : {}),
-            ...(genres?.length ? { genres } : {})
+            ...(genres?.length ? { genres: genres.join(',') } : {})
           }
         });
       }),

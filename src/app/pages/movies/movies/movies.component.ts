@@ -5,7 +5,13 @@ import { loadMovies } from '../../../actions/movies.actions';
 import { Observable } from 'rxjs';
 import { Movies } from '../../../types/movie.type';
 import { ActivatedRoute } from '@angular/router';
-import { GenreType } from '../../../types/genre.type';
+import { genreType, GenreType } from '../../../types/genre.type';
+import { filterByGenre } from '../../../actions/filters.actions';
+
+export interface GenreFilter {
+  value: GenreType;
+  selected: boolean;
+}
 
 @Component({
   selector: 'app-movies',
@@ -20,12 +26,28 @@ export class MoviesComponent implements OnInit {
     return { text, genres };
   }
 
+  genres: GenreFilter[];
   movies$: Observable<Movies>;
 
-  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {}
+  onGenreClick(genre: GenreFilter): void {
+    genre.selected = !genre.selected;
+    this.triggerFilter();
+  }
+
+  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {
+    this.genres = Object.keys(genreType).map(key => ({ value: genreType[key], selected: false }));
+  }
 
   ngOnInit(): void {
     this.store.dispatch(loadMovies({ payload: MoviesComponent.getQueryParams(this.activatedRoute) }));
     this.movies$ = this.store.select(selectMovies);
+  }
+
+  private triggerFilter(): void {
+    this.store.dispatch(
+      filterByGenre({
+        payload: this.genres.filter(genre => genre.selected).map(genre => genre.value)
+      })
+    );
   }
 }
