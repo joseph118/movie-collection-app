@@ -16,6 +16,7 @@ const initialMoviesState: MoviesState = {
 
 const moviesReducer = createReducer(
   initialMoviesState,
+
   on(MovieActions.loadMovies, state => ({ ...state, data: [], loading: true })),
   on(MovieActions.loadMoviesSuccess, (state, action) => ({
     ...state,
@@ -23,20 +24,7 @@ const moviesReducer = createReducer(
     error: null,
     loading: false
   })),
-  on(MovieActions.loadMoviesFailure, (state, action) => ({ ...state, error: action.payload, loading: false })),
-  on(MovieActions.filterMovies, (state, action) => ({ ...state, data: [], loading: true })),
-  on(MovieActions.filterMoviesSuccess, (state, action) => ({
-    ...state,
-    data: action.payload,
-    error: null,
-    loading: false
-  })),
-  on(MovieActions.filterMoviesFailure, (state, action) => ({
-    ...state,
-    error: action.payload,
-    data: [],
-    loading: false
-  }))
+  on(MovieActions.loadMoviesFailure, (state, action) => ({ ...state, error: action.payload, loading: false }))
 );
 
 export function reducer(state: MoviesState | undefined, action: Action) {

@@ -17,7 +17,7 @@ export class MoviesComponent implements OnInit {
   constructor(private store: Store<ApplicationState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadMovies());
+    this.store.dispatch(loadMovies(null));
     this.movies$ = this.store.select(selectMovies);
   }
 }

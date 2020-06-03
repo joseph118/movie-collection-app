@@ -1,0 +1,9 @@
+@import './vendor/bootstrap-mixins';
+$assets-images-path: '/' !default;
+
+@mixin add-bg-icon($img, $position: center, $size: contain, $base-path: $assets-images-path) {
+  background-image: url($base-path + $img);
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-size: $size;
+}

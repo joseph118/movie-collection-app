@@ -4,18 +4,19 @@ import { Observable, of } from 'rxjs';
 import { movies } from './data/movie.mock-data';
 import { Movie, Movies } from '../types/movie.type';
 import { GenreType } from '../types/genre.type';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
+export class MoviesService {
+  private static readonly assetsMovieCoversPath = 'assets/images/movie-covers/';
   /**
    * Simulating API calls
    */
   public getMovies(): Observable<Movies> {
     return of(movies).pipe(
-      tap(x => console.log(x)),
+      map(movies => movies.map(movie => ({ ...movie, img: `${MoviesService.assetsMovieCoversPath}${movie.img}` }))),
       delay(1000)
     );
   }
@@ -38,6 +39,8 @@ export class MovieService {
 
   public getFilteredMovies(text?: string, genres?: GenreType[]): Observable<Movies> {
     const filterText = text ? text.toLowerCase() : null;
+
+    console.log(text, genres);
 
     return this.getMovies().pipe(
       map(movies => {

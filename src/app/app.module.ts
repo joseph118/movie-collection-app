@@ -8,7 +8,8 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { MovieEffects } from './effects/movie.effects';
+import { MoviesEffects } from './effects/movies.effects';
+import { FiltersEffects } from './effects/filters.effects';
 import { HeaderComponent } from './layout/header/header.component';
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +26,7 @@ import { FormsModule } from '@angular/forms';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([MovieEffects]),
+    EffectsModule.forRoot([MoviesEffects, FiltersEffects]),
     FormsModule
   ],
   providers: [],

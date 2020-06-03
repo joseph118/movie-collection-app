@@ -1,0 +1,129 @@
+@import '../../../../../scss/variables';
+@import '../../../../../scss/mixins';
+
+$genre-icon-size: 15px !default;
+$genre-font-size: 9px !default;
+$inner-card-font-size: 11px !default;
+$card-font-size-title: 15px !default;
+$card-font-size-description: 13px !default;
+
+:host {
+  display: block;
+
+  .top-container {
+    position: relative;
+
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      .rating,
+      .length {
+        font-size: $inner-card-font-size;
+      }
+
+      .rating {
+        font-weight: 600;
+        float: left;
+      }
+
+      .length {
+        font-weight: 500;
+        float: right;
+      }
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+
+      .genre {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-size: $genre-font-size;
+        margin-left: 5px;
+
+        &:before {
+          content: '';
+          margin: 0 auto;
+          display: block;
+          width: $genre-icon-size;
+          height: $genre-icon-size;
+        }
+
+        .text {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          text-transform: capitalize;
+          opacity: 0;
+        }
+
+        &:hover .text {
+          opacity: 1;
+        }
+
+        &.action:before {
+          @include add-bg-icon('genres/action.svg');
+        }
+
+        &.adventure:before {
+          @include add-bg-icon('genres/adventure.svg');
+        }
+
+        &.biography:before {
+          @include add-bg-icon('genres/biography.svg');
+        }
+
+        &.comedy:before {
+          @include add-bg-icon('genres/comedy.svg');
+        }
+
+        &.crime:before {
+          @include add-bg-icon('genres/crime.svg');
+        }
+
+        &.drama:before {
+          @include add-bg-icon('genres/drama.svg');
+        }
+
+        &.history:before {
+          @include add-bg-icon('genres/history.svg');
+        }
+
+        &.mystery:before {
+          @include add-bg-icon('genres/mystery.svg');
+        }
+
+        &.scifi:before {
+          @include add-bg-icon('genres/scifi.svg');
+        }
+
+        &.sport:before {
+          @include add-bg-icon('genres/sport.svg');
+        }
+
+        &.thriller:before {
+          @include add-bg-icon('genres/thriller.svg');
+        }
+      }
+    }
+  }
+
+  .bottom-container {
+    .name {
+      font-size: $card-font-size-title;
+      font-weight: 600;
+    }
+    .description {
+      font-size: $card-font-size-description;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,13 +1,16 @@
 import { ActionReducerMap, createSelector, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { MoviesState, reducer as movieReducer } from './movies.reducer';
+import { MoviesState, reducer as moviesReducer } from './movies.reducer';
+import { FilterState, reducer as filtersReducer } from './filters.reducer';
 
 export interface ApplicationState {
   movies: MoviesState;
+  filters: FilterState;
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
-  movies: movieReducer
+  movies: moviesReducer,
+  filters: filtersReducer
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] = !environment.production ? [] : [];
@@ -16,3 +19,7 @@ export const selectMoviesState = (state: ApplicationState) => state.movies;
 export const selectMovies = createSelector(selectMoviesState, (state: MoviesState) => state.data);
 export const selectMoviesError = createSelector(selectMoviesState, (state: MoviesState) => state.error);
 export const selectMoviesLoading = createSelector(selectMoviesState, (state: MoviesState) => state.loading);
+
+export const selectFiltersState = (state: ApplicationState) => state.filters;
+export const selectFilterText = createSelector(selectFiltersState, (state: FilterState) => state.text);
+export const selectFilterGenres = createSelector(selectFiltersState, (state: FilterState) => state.genres);

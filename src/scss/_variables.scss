@@ -1,0 +1,20 @@
+$assets-images-path: '/assets/images/';
+
+$page-gutter: 20px;
+$page-gutter-large: 40px;
+
+$color1: #edf5e1;
+$color2: #8ee4af;
+$color3: #5cdb95;
+$color4: #379683;
+$color5: #05386b;
+
+$page-breakpoints: (
+  xs: 0,
+  tn: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1280px,
+  fhd: 1920px
+);

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '../../reducers';
-import { filterMovies, loadMovies } from '../../actions/movies.actions';
+import { filterByText } from '../../actions/filters.actions';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +16,6 @@ export class HeaderComponent implements OnInit {
 
   onSearch(data: KeyboardEvent): void {
     const value = (data.target as HTMLInputElement).value;
-    this.store.dispatch(filterMovies({ payload: { text: value, genres: [] } }));
+    this.store.dispatch(filterByText({ payload: value }));
   }
 }
