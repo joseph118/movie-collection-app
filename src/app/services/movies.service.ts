@@ -52,8 +52,8 @@ export class MoviesService {
         }
 
         if (genres?.length) {
-          movies.filter(movie => {
-            return genres.find(genre => movie.genres.filter(movieGenre => genre === movieGenre));
+          movies = movies.filter(movie => {
+            return genres.find(genre => movie.genres.find(movieGenre => genre === movieGenre));
           });
         }
 

@@ -12,7 +12,8 @@ $color5: #05386b;
 $gradient1: linear-gradient(135deg, $color1 0%, $color2 100%);
 $gradient2: linear-gradient(135deg, $color2 0%, $color3 100%);
 $gradient3: linear-gradient(135deg, $color3 0%, $color4 100%);
-$gradient4: linear-gradient(140deg, $color4 0%, $color5 100%);
+$gradient4: linear-gradient(135deg, $color4 0%, $color5 100%);
+$gradient5: linear-gradient(135deg, $color5 0%, $color1 100%);
 
 $page-breakpoints: (
   xs: 0,
