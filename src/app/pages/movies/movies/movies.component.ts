@@ -22,7 +22,7 @@ export interface GenreFilter {
 export class MoviesComponent implements OnInit {
   private static getQueryParams(activatedRoute: ActivatedRoute): { text: string; genres: GenreType[] } {
     const text = activatedRoute.snapshot.queryParams?.text;
-    const genres = []; // TODO
+    const genres = activatedRoute.snapshot.queryParams?.genres.split(',');
     return { text, genres };
   }
 
