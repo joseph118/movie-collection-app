@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { movies } from './data/movie.mock-data';
 import { Movie, Movies } from '../types/movie.type';
 import { GenreType } from '../types/genre.type';
-import { delay, map } from 'rxjs/operators';
+import { delay, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class MoviesService {
       map(movies =>
         movies.sort((movieA, movieB) => {
           const comparison = Number.parseInt(movieA.rate) > Number.parseInt(movieB.rate) ? -1 : 1;
-          return order === 'DESC' ? comparison * -1 : comparison;
+          return order === 'DESC' ? comparison : comparison * -1;
         })
       ),
       map(movies => (limit ? movies.slice(0, limit) : movies))
