@@ -16,6 +16,14 @@ html {
     text-decoration: none;
   }
 
+  input {
+    color: $color5;
+
+    &:focus {
+      outline-color: $color2;
+    }
+  }
+
   @include media-breakpoint-down(tn) {
     font-size: 15px;
   }
