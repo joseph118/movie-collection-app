@@ -2,34 +2,37 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filterByGenre, filterByText, FiltersActionType } from '../actions/filters.actions';
 import { concatMap, map, tap, withLatestFrom } from 'rxjs/operators';
-import { loadMovies, MoviesActionType } from '../actions/movies.actions';
+import { loadMovies } from '../actions/movies.actions';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ApplicationState, selectFilterGenres, selectFilterText } from '../reducers';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class FiltersEffects {
-  genreFilter$ = createEffect(() =>
+  filters$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(filterByGenre),
-      concatMap(action => of(action).pipe(withLatestFrom(this.store$.select(selectFilterText)))),
-      tap(([action, text]) => {
-        this.store$.dispatch(loadMovies({ payload: { genres: action.payload, text } }));
+      ofType(filterByGenre, filterByText),
+      concatMap(action =>
+        of(action).pipe(withLatestFrom(this.store$.select(selectFilterText), this.store$.select(selectFilterGenres)))
+      ),
+      tap(([action, text, genres]) => {
+        this.store$.dispatch(loadMovies({ payload: { genres, text } }));
+
+        this.router.navigate(['/movies'], {
+          queryParams: {
+            ...(text ? { text } : {}),
+            ...(genres?.length ? { genres } : {})
+          }
+        });
       }),
-      map(() => ({ type: FiltersActionType.filterByGenreSuccess }))
+      map(([action]) => {
+        return action.type === FiltersActionType.filterByGenre
+          ? { type: FiltersActionType.filterByGenreSuccess }
+          : { type: FiltersActionType.filterByTextSuccess };
+      })
     )
   );
 
-  textFilter$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(filterByText),
-      concatMap(action => of(action).pipe(withLatestFrom(this.store$.select(selectFilterGenres)))),
-      tap(([action, genres]) => {
-        this.store$.dispatch(loadMovies({ payload: { text: action.payload, genres } }));
-      }),
-      map(() => ({ type: FiltersActionType.filterByTextSuccess }))
-    )
-  );
-
-  constructor(private actions$: Actions, private store$: Store<ApplicationState>) {}
+  constructor(private actions$: Actions, private store$: Store<ApplicationState>, private router: Router) {}
 }
