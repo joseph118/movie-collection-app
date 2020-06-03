@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filterByGenre, filterByText, FiltersActionType } from '../actions/filters.actions';
+import { clearFilters, filterByGenre, filterByText, FiltersActionType } from '../actions/filters.actions';
 import { concatMap, map, tap, withLatestFrom } from 'rxjs/operators';
 import { loadMovies } from '../actions/movies.actions';
 import { of } from 'rxjs';
@@ -30,6 +30,20 @@ export class FiltersEffects {
         return action.type === FiltersActionType.filterByGenre
           ? { type: FiltersActionType.filterByGenreSuccess }
           : { type: FiltersActionType.filterByTextSuccess };
+      })
+    )
+  );
+
+  clearFilters$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(clearFilters),
+      map(action => {
+        if (action.payload) {
+          this.router.navigate(['/movies'], { queryParams: {} });
+          this.store$.dispatch(loadMovies(null));
+        }
+
+        return { type: FiltersActionType.clearFiltersSuccess };
       })
     )
   );

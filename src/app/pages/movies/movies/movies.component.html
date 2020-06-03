@@ -1,11 +1,12 @@
 <div class="filter-container">
-  <ul>
-    <li *ngFor="let genre of genres">
-      <a class="genre" [ngClass]="{ selected: genre.selected }" (click)="onGenreClick(genre)">
+  <ul class="genre-list">
+    <li class="genre-link" *ngFor="let genre of genres">
+      <a class="genre link" [ngClass]="{ selected: genre.selected }" (click)="onGenreClick(genre)">
         <span class="text" [innerText]="genre.value"></span>
       </a>
     </li>
   </ul>
+  <div class="clear-filters"><button class="btn clear-filter" (click)="clearFilters()">Clear Filters</button></div>
 </div>
 
 <div *ngFor="let movie of movies$ | async">

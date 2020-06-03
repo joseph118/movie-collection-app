@@ -17,7 +17,8 @@ const filtersReducer = createReducer(
   on(FiltersAction.filterByGenre, (state, action) => ({ ...state, genres: action.payload })),
   on(FiltersAction.filterByGenreSuccess),
   on(FiltersAction.filterByText, (state, action) => ({ ...state, text: action.payload })),
-  on(FiltersAction.filterByTextSuccess)
+  on(FiltersAction.filterByTextSuccess),
+  on(FiltersAction.clearFilters, state => ({ text: null, genres: [] }))
 );
 
 export function reducer(state: FilterState | undefined, action: Action) {
