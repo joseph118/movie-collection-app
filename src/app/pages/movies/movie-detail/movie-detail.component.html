@@ -3,15 +3,13 @@
   <h2 [innerText]="movie.description" class="description"></h2>
 
   <img [src]="movie.img" class="image" />
-  <div class="top-bar">
-    <div [innerText]="movie.rate" class="rating"></div>
-    <div [innerText]="movie.length" class="length"></div>
-  </div>
-  <div class="bottom-bar">
-    <div class="genres">
-      <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
-        <span [innerText]="genre" class="text"></span>
-      </span>
-    </div>
+
+  <div [innerText]="movie.rate" class="rating"></div>
+  <div [innerText]="movie.length" class="length"></div>
+
+  <div class="genres">
+    <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
+      <span [innerText]="genre" class="text"></span>
+    </span>
   </div>
 </ng-container>
