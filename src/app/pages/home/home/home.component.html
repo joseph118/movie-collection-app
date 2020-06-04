@@ -1,9 +1,11 @@
 <section>
   <h1>Top 5 Highest rated movies</h1>
 
-  <div class="collection">
-    <div *ngFor="let movie of topRatedMovies$ | async">
-      <app-video-card [movie]="movie" [routePath]="'/movies/detail/' + movie.id"></app-video-card>
-    </div>
+  <div class="video-container">
+    <app-video-card
+      *ngFor="let movie of topRatedMovies$ | async"
+      [movie]="movie"
+      [routePath]="'/movies/detail/' + movie.id"
+    ></app-video-card>
   </div>
 </section>

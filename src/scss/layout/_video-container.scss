@@ -1,0 +1,14 @@
+.video-container {
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    app-video-card {
+      margin: 10px 5px;
+    }
+  }
+}

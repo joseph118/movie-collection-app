@@ -2,14 +2,13 @@
 @import '../../../scss/mixins';
 @import './scss/icons';
 
-$genre-icon-size: 15px !default;
+$card-icon-size: 20px !default;
 $genre-font-size: 9px !default;
 
 $inner-card-font-size: 12px !default;
 $card-font-size-title: 15px !default;
 $card-font-size-description: 12px !default;
 $card-font-size-length: 10px !default;
-$card-padding: 4px !default;
 $text-genre-gap-height: 4px !default;
 
 :host {
@@ -20,7 +19,7 @@ $text-genre-gap-height: 4px !default;
   margin: 10px 0;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
   }
 
   a {
@@ -29,7 +28,7 @@ $text-genre-gap-height: 4px !default;
     .top-container {
       position: relative;
       display: inline-block;
-      margin: 0 auto;
+      width: 100%;
 
       img {
         min-height: 160px;
@@ -42,29 +41,33 @@ $text-genre-gap-height: 4px !default;
         right: 0;
 
         .rating {
+          position: absolute;
           font-weight: 600;
           background-color: transparentize($black, 0.3);
           padding: 4px;
           border-radius: 100%;
           color: $white;
           font-size: $inner-card-font-size;
-          margin: $card-padding;
-          float: left;
+          width: $card-icon-size;
+          height: $card-icon-size;
+          line-height: 19px;
+          left: 0;
+          top: 0;
         }
       }
 
       .bottom-bar {
         position: absolute;
-        bottom: $card-padding;
-        left: 0;
+        width: 30px;
+        top: 0;
         right: 0;
 
         .genre {
+          margin-top: 5px;
           display: inline-block;
           position: relative;
           text-align: center;
           font-size: $genre-font-size;
-          margin-left: 5px;
           background-color: transparentize($white, 0.3);
           border-radius: 15px;
           padding: 4px;
@@ -75,8 +78,8 @@ $text-genre-gap-height: 4px !default;
             content: '';
             margin: 0 auto;
             display: block;
-            width: $genre-icon-size;
-            height: $genre-icon-size;
+            width: $card-icon-size;
+            height: $card-icon-size;
           }
 
           .text {
