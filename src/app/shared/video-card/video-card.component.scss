@@ -84,9 +84,9 @@ $text-genre-gap-height: 4px !default;
 
           .text {
             position: absolute;
-            top: calc(100% + #{$text-genre-gap-height});
-            left: 50%;
-            transform: translateX(-50%);
+            right: calc(100% + #{$text-genre-gap-height});
+            top: 50%;
+            transform: translateY(-50%);
             text-transform: capitalize;
             opacity: 0;
             background-color: transparentize($white, 0.1);
@@ -94,16 +94,17 @@ $text-genre-gap-height: 4px !default;
             border-radius: 3px;
             padding: 3px;
             color: $black;
+            border-bottom: 1px solid $color2;
 
             &:before {
               content: '';
               position: absolute;
-              height: $text-genre-gap-height;
-              width: 4px;
+              height: 4px;
+              width: $text-genre-gap-height;
               background-color: transparentize($white, 0.2);
-              left: 50%;
-              transform: translateX(-50%);
-              top: -$text-genre-gap-height;
+              top: 50%;
+              transform: translateY(-50%);
+              right: -($text-genre-gap-height);
             }
           }
 
