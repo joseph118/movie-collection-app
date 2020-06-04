@@ -54,9 +54,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(
-      loadMovies({ payload: MoviesComponent.getQueryParams(this.activatedRoute, MoviesComponent.genreList) })
-    );
+    const filters = MoviesComponent.getQueryParams(this.activatedRoute, MoviesComponent.genreList);
+    if (filters.genres) {
+      filters.genres.forEach(filterGenre => {
+        this.genres.find(genre => genre.value === filterGenre).selected = true;
+      });
+    }
+
+    this.store.dispatch(loadMovies({ payload: filters }));
     this.movies$ = this.store.select(selectMovies);
   }
 

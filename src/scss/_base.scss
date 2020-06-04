@@ -9,6 +9,7 @@ html {
 
     background: $gradient4;
     min-height: 100vh;
+    transition: all 0.3s ease-in-out;
   }
 
   a {
@@ -18,7 +19,12 @@ html {
 
   input {
     color: $color5;
+  }
 
+  a,
+  input,
+  li,
+  button {
     &:focus {
       outline-color: $color2;
     }
