@@ -1,3 +1,5 @@
+<button class="btn back" (click)="onBack()">Back</button>
+
 <ng-container *ngIf="movie$ | async as movie">
   <h1 [innerText]="movie.name" class="name"></h1>
   <h2 [innerText]="movie.description" class="description"></h2>
@@ -6,6 +8,9 @@
 
   <div [innerText]="movie.rate" class="rating"></div>
   <div [innerText]="movie.length" class="length"></div>
+
+  <div [innerText]="movie.id" class="id"></div>
+  <div [innerText]="movie.key" class="key"></div>
 
   <div class="genres">
     <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">

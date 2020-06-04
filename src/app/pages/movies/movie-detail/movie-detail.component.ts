@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
 import { Movie } from '../../../types/movie.type';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,7 +16,16 @@ import { Movie } from '../../../types/movie.type';
 export class MovieDetailComponent implements OnInit {
   movie$: Observable<Movie>;
 
-  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private store: Store<ApplicationState>,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {}
+
+  onBack(): void {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     const movieId = Number.parseInt(this.activatedRoute.snapshot.params.id);
