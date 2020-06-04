@@ -4,6 +4,7 @@ import { loadMovies, MoviesActionType } from '../actions/movies.actions';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { MoviesService } from '../services/movies.service';
 import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class MoviesEffects {
@@ -14,11 +15,11 @@ export class MoviesEffects {
       mergeMap(payload =>
         this.movieService.getFilteredMovies(payload?.text, payload?.genres).pipe(
           map(movies => ({ type: MoviesActionType.loadMoviesSuccess, payload: movies })),
-          catchError(() => of({ type: MoviesActionType.loadMoviesFailure, payload: 'Load movie error' }))
+          catchError(() => of({ type: MoviesActionType.loadMoviesFailure, payload: 'Load movies error' }))
         )
       )
     )
   );
 
-  constructor(private actions$: Actions, private movieService: MoviesService) {}
+  constructor(private store$: Store, private actions$: Actions, private movieService: MoviesService) {}
 }

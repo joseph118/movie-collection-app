@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class FiltersEffects {
+  private static readonly movieRoute = '/movies';
+
   filters$ = createEffect(() =>
     this.actions$.pipe(
       ofType(filterByGenre, filterByText),
@@ -19,7 +21,7 @@ export class FiltersEffects {
       tap(([action, text, genres]) => {
         this.store$.dispatch(loadMovies({ payload: { genres, text } }));
 
-        this.router.navigate(['/movies'], {
+        this.router.navigate([FiltersEffects.movieRoute], {
           queryParams: {
             ...(text ? { text } : {}),
             ...(genres?.length ? { genres: genres.join(',') } : {})
@@ -39,7 +41,7 @@ export class FiltersEffects {
       ofType(clearFilters),
       map(action => {
         if (action.payload) {
-          this.router.navigate(['/movies'], { queryParams: {} });
+          this.router.navigate([FiltersEffects.movieRoute], { queryParams: {} });
           this.store$.dispatch(loadMovies(null));
         }
 

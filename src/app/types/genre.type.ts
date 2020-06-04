@@ -24,3 +24,5 @@ export const genreType = {
   sport: 'sport' as GenreType,
   thriller: 'thriller' as GenreType
 };
+
+export type Genres = GenreType[];

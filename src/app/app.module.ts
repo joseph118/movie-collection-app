@@ -13,6 +13,7 @@ import { FiltersEffects } from './effects/filters.effects';
 import { HeaderComponent } from './layout/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HomeEffects } from './effects/home.effects';
+import { MovieEffects } from './effects/movie.effects';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -27,7 +28,7 @@ import { HomeEffects } from './effects/home.effects';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([MoviesEffects, FiltersEffects, HomeEffects]),
+    EffectsModule.forRoot([MoviesEffects, FiltersEffects, HomeEffects, MovieEffects]),
     FormsModule
   ],
   providers: [],

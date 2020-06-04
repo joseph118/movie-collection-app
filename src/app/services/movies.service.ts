@@ -17,7 +17,7 @@ export class MoviesService {
   public getMovies(): Observable<Movies> {
     return of(movies).pipe(
       map(movies => movies.map(movie => ({ ...movie, img: `${MoviesService.assetsMovieCoversPath}${movie.img}` }))),
-      delay(1000)
+      delay(600)
     );
   }
 

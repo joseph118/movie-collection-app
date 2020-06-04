@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { GenreType } from '../types/genre.type';
 import * as FiltersAction from '../actions/filters.actions';
 
@@ -8,20 +8,16 @@ export interface FilterState {
 }
 
 const initialFilterState: FilterState = {
-  text: null,
+  text: '',
   genres: []
 };
 
-const filtersReducer = createReducer(
+export const filtersReducer = createReducer(
   initialFilterState,
   on(FiltersAction.filterByGenre, (state, action) => ({ ...state, genres: action.payload })),
   on(FiltersAction.filterByGenreSuccess),
   on(FiltersAction.filterByText, (state, action) => ({ ...state, text: action.payload })),
   on(FiltersAction.filterByTextSuccess),
-  on(FiltersAction.clearFilters, state => ({ text: null, genres: [] })),
+  on(FiltersAction.clearFilters, state => ({ text: '', genres: [] })),
   on(FiltersAction.clearFiltersSuccess)
 );
-
-export function reducer(state: FilterState | undefined, action: Action) {
-  return filtersReducer(state, action);
-}

@@ -5,8 +5,10 @@ import { loadMovies } from '../../../actions/movies.actions';
 import { Observable } from 'rxjs';
 import { Movies } from '../../../types/movie.type';
 import { ActivatedRoute } from '@angular/router';
-import { genreType, GenreType } from '../../../types/genre.type';
+import { Genres, genreType, GenreType } from '../../../types/genre.type';
 import { clearFilters, filterByGenre } from '../../../actions/filters.actions';
+
+export type GenreFilters = GenreFilter[];
 
 export interface GenreFilter {
   value: GenreType;
@@ -20,9 +22,13 @@ export interface GenreFilter {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesComponent implements OnInit, OnDestroy {
-  private static getQueryParams(activatedRoute: ActivatedRoute): { text: string; genres: GenreType[] } {
+  private static readonly genreList: Genres = Object.keys(genreType).map(key => genreType[key]);
+
+  private static getQueryParams(activatedRoute: ActivatedRoute, genreList: Genres): { text: string; genres: Genres } {
     const text = activatedRoute.snapshot.queryParams?.text;
-    const genres = activatedRoute.snapshot.queryParams?.genres?.split(',');
+    const genres = activatedRoute.snapshot.queryParams?.genres
+      ?.split(',')
+      .filter(urlGenre => genreList.find(genre => urlGenre === genre)); // Clean unknown filters
     return { text, genres };
   }
 
@@ -40,7 +46,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {
-    this.genres = Object.keys(genreType).map(key => ({ value: genreType[key], selected: false }));
+    this.genres = MoviesComponent.genreList.map(genre => ({ value: genre, selected: false }));
   }
 
   ngOnDestroy(): void {
@@ -48,7 +54,9 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadMovies({ payload: MoviesComponent.getQueryParams(this.activatedRoute) }));
+    this.store.dispatch(
+      loadMovies({ payload: MoviesComponent.getQueryParams(this.activatedRoute, MoviesComponent.genreList) })
+    );
     this.movies$ = this.store.select(selectMovies);
   }
 
