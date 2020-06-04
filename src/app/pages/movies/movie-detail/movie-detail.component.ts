@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ApplicationState, selectMovie } from '../../../reducers';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
 import { Movie } from '../../../types/movie.type';
@@ -15,11 +15,16 @@ import { Movie } from '../../../types/movie.type';
 export class MovieDetailComponent implements OnInit {
   movie$: Observable<Movie>;
 
-  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {}
+  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    const movieId = this.activatedRoute.snapshot.params.id;
-    this.store.dispatch(getMovie({ payload: movieId }));
-    this.movie$ = this.store.select(selectMovie);
+    const movieId = Number.parseInt(this.activatedRoute.snapshot.params.id);
+
+    if (!Number.isNaN(movieId)) {
+      this.store.dispatch(getMovie({ payload: movieId }));
+      this.movie$ = this.store.select(selectMovie);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

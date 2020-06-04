@@ -16,7 +16,7 @@ export class MovieEffects {
       map(([action, movies]) => {
         return {
           action: action,
-          cachedMovie: movies.find(movie => movie.id === action.payload)
+          cachedMovie: movies?.find(movie => movie.id === action.payload)
         };
       }),
       mergeMap(data => {
