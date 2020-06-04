@@ -3,7 +3,6 @@
     <img class="image" [src]="movie.img" />
     <div class="top-bar">
       <div class="rating" [innerText]="movie.rate"></div>
-      <div class="length" [innerText]="movie.length"></div>
     </div>
     <div class="bottom-bar">
       <div class="genres">
@@ -15,6 +14,7 @@
   </div>
   <div class="bottom-container">
     <h1 class="name" [innerText]="movie.name"></h1>
+    <h3 class="length" [innerText]="movie.length"></h3>
     <h2 class="description" [innerText]="movie.description"></h2>
   </div>
 </a>

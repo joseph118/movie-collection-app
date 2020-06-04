@@ -13,6 +13,10 @@
   <div class="clear-filters"><button class="btn clear-filter" (click)="clearFilters()">Clear Filters</button></div>
 </div>
 
-<div *ngFor="let movie of movies$ | async">
-  <app-video-card [movie]="movie" [routePath]="'detail/' + movie.id"></app-video-card>
-</div>
+<section class="video-container">
+  <app-video-card
+    *ngFor="let movie of movies$ | async"
+    [movie]="movie"
+    [routePath]="'detail/' + movie.id"
+  ></app-video-card>
+</section>
