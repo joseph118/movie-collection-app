@@ -10,5 +10,5 @@
 </div>
 
 <div *ngFor="let movie of movies$ | async">
-  <app-video-card [movie]="movie"></app-video-card>
+  <app-video-card [movie]="movie" [routePath]="'detail/' + movie.id"></app-video-card>
 </div>

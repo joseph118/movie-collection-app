@@ -10,6 +10,8 @@ import { Movie } from '../../types/movie.type';
 export class VideoCardComponent implements OnInit {
   @HostBinding('class.movie') movieClass = true;
   @Input() movie: Movie;
+  @Input() routePath: string;
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,18 +1,20 @@
-<div class="top-container">
-  <img class="image" [src]="movie.img" />
-  <div class="top-bar">
-    <div class="rating" [innerText]="movie.rate"></div>
-    <div class="length" [innerText]="movie.length"></div>
-  </div>
-  <div class="bottom-bar">
-    <div class="genres">
-      <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
-        <span class="text" [innerText]="genre"></span>
-      </span>
+<a [routerLink]="routePath">
+  <div class="top-container">
+    <img class="image" [src]="movie.img" />
+    <div class="top-bar">
+      <div class="rating" [innerText]="movie.rate"></div>
+      <div class="length" [innerText]="movie.length"></div>
+    </div>
+    <div class="bottom-bar">
+      <div class="genres">
+        <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
+          <span class="text" [innerText]="genre"></span>
+        </span>
+      </div>
     </div>
   </div>
-</div>
-<div class="bottom-container">
-  <h1 class="name" [innerText]="movie.name"></h1>
-  <h2 class="description" [innerText]="movie.description"></h2>
-</div>
+  <div class="bottom-container">
+    <h1 class="name" [innerText]="movie.name"></h1>
+    <h2 class="description" [innerText]="movie.description"></h2>
+  </div>
+</a>

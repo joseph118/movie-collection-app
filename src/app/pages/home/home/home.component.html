@@ -3,7 +3,7 @@
 
   <div class="collection">
     <div *ngFor="let movie of topRatedMovies$ | async">
-      <app-video-card [movie]="movie"></app-video-card>
+      <app-video-card [movie]="movie" [routePath]="'/movies/detail/' + movie.id"></app-video-card>
     </div>
   </div>
 </section>

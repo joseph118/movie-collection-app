@@ -1,4 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ApplicationState, selectMovie } from '../../../reducers';
+import { ActivatedRoute } from '@angular/router';
+import { getMovie } from '../../../actions/movie.actions';
+import { Observable } from 'rxjs';
+import { Movie } from '../../../types/movie.type';
 
 @Component({
   selector: 'app-movie-detail',
@@ -7,7 +13,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieDetailComponent implements OnInit {
-  constructor() {}
+  movie$: Observable<Movie>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const movieId = this.activatedRoute.snapshot.params.id;
+    this.store.dispatch(getMovie({ payload: movieId }));
+    this.movie$ = this.store.select(selectMovie);
+  }
 }
