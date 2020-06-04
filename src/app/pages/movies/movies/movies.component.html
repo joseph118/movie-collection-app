@@ -1,9 +1,8 @@
 <div class="filter-container">
   <ul class="genre-list">
-    <li class="genre-link" *ngFor="let genre of genres">
-      <a class="genre link" [ngClass]="{ selected: genre.selected }" (click)="onGenreClick(genre)">
-        <span class="text" [innerText]="genre.value"></span>
-      </a>
+    <li class="genre-checkbox" *ngFor="let genre of genres; let idx = index">
+      <input type="checkbox" [id]="'checkbox-' + idx" [value]="genre.selected" (click)="onGenreClick(genre)" />
+      <label class="text" [innerText]="genre.value" [htmlFor]="'checkbox-' + idx"></label>
     </li>
   </ul>
   <div class="clear-filters"><button class="btn clear-filter" (click)="clearFilters()">Clear Filters</button></div>
