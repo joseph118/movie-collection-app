@@ -1,19 +1,23 @@
 html {
-  font-size: 18px;
+  font-size: 22px;
   scroll-behavior: smooth;
 
   body {
-    color: $color1;
+    color: $white;
     margin: 0;
     font-family: 'Titillium Web', sans-serif;
 
-    background: $gradient4;
+    background: $gradient5;
     min-height: 100vh;
     transition: all 0.3s ease-in-out;
+
+    main {
+      padding: 0 $page-gutter;
+    }
   }
 
   a {
-    color: $color2;
+    color: $white;
     text-decoration: none;
   }
 
@@ -30,27 +34,19 @@ html {
     }
   }
 
-  @include media-breakpoint-down(tn) {
-    font-size: 18px;
-  }
-
-  @include media-breakpoint-up(sm) {
-    font-size: 20px;
-  }
-
   @include media-breakpoint-up(md) {
     font-size: 24px;
   }
 
   @include media-breakpoint-up(lg) {
-    font-size: 28px;
-  }
+    font-size: 26px;
 
-  @include media-breakpoint-up(xl) {
-    font-size: 32px;
+    body main {
+      padding: 0 $page-gutter-large;
+    }
   }
 
   @include media-breakpoint-up(fhd) {
-    font-size: 34px;
+    font-size: 28px;
   }
 }

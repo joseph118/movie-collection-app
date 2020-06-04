@@ -4,17 +4,24 @@
 
 $genre-icon-size: 15px !default;
 $genre-font-size: 9px !default;
-$inner-card-font-size: 11px !default;
-$card-font-size-title: 14px !default;
-$card-font-size-description: 11px !default;
-$card-font-size-length: 9px !default;
-$card-padding: 3px !default;
-$text-genre-gap-height: 3px !default;
+
+$inner-card-font-size: 12px !default;
+$card-font-size-title: 15px !default;
+$card-font-size-description: 12px !default;
+$card-font-size-length: 10px !default;
+$card-padding: 4px !default;
+$text-genre-gap-height: 4px !default;
 
 :host {
   display: inline-block;
-  width: 180px;
   vertical-align: top;
+  transition: transform 0.3s ease-in-out;
+  padding: 10px;
+  margin: 10px 0;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   a {
     text-align: center;
@@ -25,6 +32,7 @@ $text-genre-gap-height: 3px !default;
       margin: 0 auto;
 
       img {
+        min-height: 160px;
       }
 
       .top-bar {
@@ -104,20 +112,37 @@ $text-genre-gap-height: 3px !default;
     }
 
     .bottom-container {
-      text-align: justify;
+      text-align: left;
 
       .name {
         font-size: $card-font-size-title;
         font-weight: 600;
-      }
-      .description {
-        font-size: $card-font-size-description;
-        font-weight: 500;
+        margin-top: 5px;
       }
       .length {
         font-size: $card-font-size-length;
         font-weight: 300;
+        margin-top: 2px;
+      }
+      .description {
+        font-size: $card-font-size-description;
+        font-weight: 500;
+        margin-top: 4px;
       }
     }
+  }
+
+  @include media-breakpoint-up(md) {
+    background: $color6;
+    box-shadow: 4px 4px 8px 2px transparentize($black, 0.7);
+    max-width: 190px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    max-width: 200px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 220px;
   }
 }
