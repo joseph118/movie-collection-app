@@ -30,11 +30,11 @@ export class MovieDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const movieId = Number.parseInt(this.activatedRoute.snapshot.params.id);
+    const movieId = this.activatedRoute.snapshot.params.id;
     this.loading$ = this.store.select(selectMovieLoading);
     this.error$ = this.store.select(selectMovieError);
 
-    if (!Number.isNaN(movieId)) {
+    if (movieId) {
       this.store.dispatch(getMovie({ payload: movieId }));
       this.movie$ = this.store.select(selectMovie);
     } else {

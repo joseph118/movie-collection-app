@@ -33,8 +33,8 @@ export class MoviesService {
     );
   }
 
-  public getMovieById(id: number): Observable<Movie> {
-    return this.getMovies().pipe(map(movies => movies.find(movie => movie.id === id)));
+  public getMovieByKey(key: string): Observable<Movie> {
+    return this.getMovies().pipe(map(movies => movies.find(movie => movie.key === key)));
   }
 
   public getFilteredMovies(text?: string, genres?: GenreType[]): Observable<Movies> {

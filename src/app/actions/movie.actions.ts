@@ -7,6 +7,6 @@ export enum MovieActionType {
   getMovieFailure = '[Movie] Get Movie Failure'
 }
 
-export const getMovie = createAction(MovieActionType.getMovie, props<{ payload: number }>());
+export const getMovie = createAction(MovieActionType.getMovie, props<{ payload: string }>());
 export const getMovieSuccess = createAction(MovieActionType.getMovieSuccess, props<{ payload: Movie }>());
 export const getMovieFailure = createAction(MovieActionType.getMovieFailure, props<{ payload: string }>());

@@ -6,7 +6,7 @@
   <app-video-card
     *ngFor="let movie of movies$ | async"
     [movie]="movie"
-    [routePath]="'detail/' + movie.id"
+    [routePath]="'detail/' + movie.key"
   ></app-video-card>
 </section>
 
