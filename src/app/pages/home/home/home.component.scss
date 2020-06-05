@@ -1,3 +1,16 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
 :host {
   display: block;
+  padding: 20px;
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .video-container {
+    justify-content: left;
+  }
 }
