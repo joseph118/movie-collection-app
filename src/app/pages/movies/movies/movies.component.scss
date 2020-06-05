@@ -5,11 +5,22 @@
   display: block;
 
   .filter-container {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background-color: $color1;
+    padding: 5px;
+    color: black;
+    max-height: 100vh;
+    overflow-y: auto;
+
     .genre-list {
       .genre-checkbox {
-        margin: 0 8px;
+        margin: 0 4px 5px 4px;
         vertical-align: middle;
-        display: inline-block;
+        display: block;
         border-radius: 3px;
 
         input {
@@ -17,11 +28,12 @@
         }
 
         label {
+          text-align: center;
           position: relative;
           text-transform: capitalize;
           font-size: 14px;
-          padding: 2px 5px;
           z-index: 1;
+          padding: 2px 0;
 
           &:before {
             // hide text
