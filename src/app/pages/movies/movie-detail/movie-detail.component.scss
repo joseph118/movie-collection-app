@@ -2,13 +2,21 @@
 @import '../../../../scss/mixins';
 
 :host {
+  padding: $page-gutter;
   display: block;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $gradient5;
+  z-index: 50;
+  overflow-y: auto;
 
   .button-container {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: $page-gutter;
+    top: $page-gutter;
 
     .btn.back {
       position: relative;
@@ -84,6 +92,15 @@
           color: $black;
         }
       }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: $page-gutter-large;
+
+    .button-container {
+      left: $page-gutter-large;
+      top: $page-gutter-large;
     }
   }
 }
