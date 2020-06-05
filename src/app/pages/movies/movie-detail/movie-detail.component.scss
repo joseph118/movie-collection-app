@@ -1,3 +1,89 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
 :host {
   display: block;
+  position: relative;
+
+  .button-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .btn.back {
+      position: relative;
+      overflow: hidden;
+      border-radius: 100%;
+
+      &,
+      &:before {
+        width: 40px;
+        height: 40px;
+      }
+
+      &:before {
+        content: '';
+        @include add-bg-icon('back.svg', center, 50px 50px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .container-top {
+    text-align: center;
+
+    .text-container {
+      text-align: left;
+
+      .name {
+        margin-top: 10px;
+        font-size: 26px;
+        font-weight: 600;
+      }
+
+      .description {
+        margin-top: 3px;
+        font-size: 21px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .container-bottom {
+    margin-top: 16px;
+
+    .length,
+    .rating {
+      margin-top: 6px;
+
+      span {
+        display: inline-block;
+      }
+    }
+
+    .genres {
+      margin-top: 6px;
+
+      .genre {
+        margin: 6px 5px 0 0;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        background-color: transparentize($white, 0.3);
+        border-radius: 5px;
+        padding: 5px;
+        vertical-align: center;
+        min-width: 50px;
+
+        .text {
+          text-transform: capitalize;
+          margin-top: 3px;
+          color: $black;
+        }
+      }
+    }
+  }
 }

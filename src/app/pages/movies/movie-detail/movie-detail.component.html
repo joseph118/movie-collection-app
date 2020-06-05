@@ -1,20 +1,25 @@
-<button class="btn back" (click)="onBack()">Back</button>
+<div class="button-container">
+  <button class="btn back" (click)="onBack()"></button>
+</div>
 
 <ng-container *ngIf="movie$ | async as movie">
-  <h1 [innerText]="movie.name" class="name"></h1>
-  <h2 [innerText]="movie.description" class="description"></h2>
+  <div class="container-top">
+    <img [src]="movie.img" [alt]="movie.name" class="image" />
 
-  <img [src]="movie.img" class="image" />
+    <div class="text-container">
+      <h1 [innerText]="movie.name" class="name"></h1>
+      <h2 [innerText]="movie.description" class="description"></h2>
+    </div>
+  </div>
+  <div class="container-bottom">
+    <label class="rating">Rating: <span [innerText]="movie.rate"></span></label>
+    <label class="length">Length: <span [innerText]="movie.length"></span></label>
 
-  <div [innerText]="movie.rate" class="rating"></div>
-  <div [innerText]="movie.length" class="length"></div>
-
-  <div [innerText]="movie.id" class="id"></div>
-  <div [innerText]="movie.key" class="key"></div>
-
-  <div class="genres">
-    <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
-      <span [innerText]="genre" class="text"></span>
-    </span>
+    <div class="genres">
+      <label>Genres</label>
+      <span *ngFor="let genre of movie.genres" [ngClass]="['genre', genre | lowercase]">
+        <span [innerText]="genre" class="text"></span>
+      </span>
+    </div>
   </div>
 </ng-container>

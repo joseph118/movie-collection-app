@@ -1,7 +1,7 @@
 <a [routerLink]="routePath">
   <div class="container">
     <div class="top-container">
-      <img class="image" [src]="movie.img" />
+      <img class="image" [src]="movie.img" [alt]="movie.name" />
       <div class="top-bar">
         <div class="rating" [innerText]="movie.rate"></div>
       </div>
