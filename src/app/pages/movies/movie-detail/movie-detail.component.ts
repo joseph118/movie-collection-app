@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ApplicationState, selectMovie } from '../../../reducers';
+import { ApplicationState, selectMovie, selectMovieError, selectMovieLoading } from '../../../reducers';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
@@ -15,6 +15,8 @@ import { Movie } from '../../../models/movie.model';
 })
 export class MovieDetailComponent implements OnInit {
   movie$: Observable<Movie>;
+  loading$: Observable<boolean>;
+  error$: Observable<string>;
 
   constructor(
     private store: Store<ApplicationState>,
@@ -29,6 +31,8 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const movieId = Number.parseInt(this.activatedRoute.snapshot.params.id);
+    this.loading$ = this.store.select(selectMovieLoading);
+    this.error$ = this.store.select(selectMovieError);
 
     if (!Number.isNaN(movieId)) {
       this.store.dispatch(getMovie({ payload: movieId }));

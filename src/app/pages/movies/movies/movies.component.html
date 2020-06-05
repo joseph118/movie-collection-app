@@ -2,10 +2,18 @@
   <app-filter-bar></app-filter-bar>
 </section>
 
-<section class="video-container">
+<section class="video-container" [ngClass]="{ loading: loading$ | async, error: error$ | async }">
   <app-video-card
     *ngFor="let movie of movies$ | async"
     [movie]="movie"
     [routePath]="'detail/' + movie.id"
   ></app-video-card>
+</section>
+
+<section *ngIf="error$ | async as error" class="error-container">
+  <p class="message" [innerText]="error"></p>
+</section>
+
+<section class="loading-container" [ngClass]="{ loading: loading$ | async }">
+  <app-loader></app-loader>
 </section>

@@ -1,0 +1,9 @@
+.loading-container {
+  text-align: center;
+  padding: 50px;
+  display: none;
+
+  &.loading {
+    display: block;
+  }
+}

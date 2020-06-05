@@ -1,6 +1,11 @@
 .video-container {
   text-align: center;
 
+  &.error,
+  &.loading {
+    display: none;
+  }
+
   @include media-breakpoint-up(sm) {
     display: flex;
     flex-direction: row;

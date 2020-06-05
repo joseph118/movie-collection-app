@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ApplicationState, selectMovies } from '../../../reducers';
+import { ApplicationState, selectMovies, selectMoviesError, selectMoviesLoading } from '../../../reducers';
 import { loadMovies } from '../../../actions/movies.actions';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ import { FilterUtils } from '../../../utils/filter-utils';
 })
 export class MoviesComponent implements OnInit {
   movies$: Observable<Movies>;
+  loading$: Observable<boolean>;
+  error$: Observable<string>;
 
   constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {}
 
@@ -23,5 +25,7 @@ export class MoviesComponent implements OnInit {
     const filters = FilterUtils.getFilterQueryParams(this.activatedRoute, genreList);
     this.store.dispatch(loadMovies({ payload: filters }));
     this.movies$ = this.store.select(selectMovies);
+    this.loading$ = this.store.select(selectMoviesLoading);
+    this.error$ = this.store.select(selectMoviesError);
   }
 }

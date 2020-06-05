@@ -8,4 +8,12 @@
       [routePath]="'/movies/detail/' + movie.id"
     ></app-video-card>
   </div>
+
+  <div *ngIf="error$ | async as error" class="error-container">
+    <p class="message" [innerText]="error"></p>
+  </div>
+
+  <div class="loading-container" [ngClass]="{ loading: loading$ | async }">
+    <app-loader></app-loader>
+  </div>
 </section>
