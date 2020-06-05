@@ -2,7 +2,11 @@
   <button class="btn back" (click)="onBack()"></button>
 </div>
 
-<ng-container *ngIf="movie$ | async as movie">
+<div
+  class="detail-container"
+  *ngIf="movie$ | async as movie"
+  [ngClass]="{ loading: loading$ | async, error: error$ | async }"
+>
   <div class="container-top">
     <img [src]="movie.img" [alt]="movie.name" class="image" />
 
@@ -22,7 +26,7 @@
       </span>
     </div>
   </div>
-</ng-container>
+</div>
 
 <section *ngIf="error$ | async as error" class="error-container">
   <p class="message" [innerText]="error"></p>

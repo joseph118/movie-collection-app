@@ -40,56 +40,74 @@
     }
   }
 
-  .container-top {
-    text-align: center;
+  .detail-container {
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    width: auto;
+    height: auto;
+    overflow: hidden;
 
-    .text-container {
-      text-align: left;
-
-      .name {
-        margin-top: 10px;
-        font-size: 26px;
-        font-weight: 600;
-      }
-
-      .description {
-        margin-top: 3px;
-        font-size: 21px;
-        font-weight: 300;
-      }
-    }
-  }
-
-  .container-bottom {
-    margin-top: 16px;
-
-    .length,
-    .rating {
-      margin-top: 6px;
-
-      span {
-        display: inline-block;
-      }
+    &.error,
+    &.loading {
+      width: 0;
+      height: 0;
+      opacity: 0;
     }
 
-    .genres {
-      margin-top: 6px;
+    .container-top {
+      text-align: center;
 
-      .genre {
-        margin: 6px 5px 0 0;
-        display: inline-block;
-        position: relative;
-        text-align: center;
-        background-color: transparentize($white, 0.3);
-        border-radius: 5px;
-        padding: 5px;
-        vertical-align: center;
-        min-width: 50px;
+      img {
+        min-height: 160px;
+      }
+      .text-container {
+        text-align: left;
 
-        .text {
-          text-transform: capitalize;
+        .name {
+          margin-top: 10px;
+          font-size: 26px;
+          font-weight: 600;
+        }
+
+        .description {
           margin-top: 3px;
-          color: $black;
+          font-size: 21px;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .container-bottom {
+      margin-top: 16px;
+
+      .length,
+      .rating {
+        margin-top: 6px;
+
+        span {
+          display: inline-block;
+        }
+      }
+
+      .genres {
+        margin-top: 6px;
+
+        .genre {
+          margin: 6px 5px 0 0;
+          display: inline-block;
+          position: relative;
+          text-align: center;
+          background-color: transparentize($white, 0.3);
+          border-radius: 5px;
+          padding: 5px;
+          vertical-align: center;
+          min-width: 50px;
+
+          .text {
+            text-transform: capitalize;
+            margin-top: 3px;
+            color: $black;
+          }
         }
       }
     }
