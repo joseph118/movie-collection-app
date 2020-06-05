@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
-import { Movie } from '../../types/movie.type';
+import { Movie } from '../../models/movie.model';
 
 @Component({
   selector: 'app-video-card',

@@ -1,0 +1,13 @@
+<ul class="genre-list">
+  <li
+    class="genre-checkbox"
+    *ngFor="let genre of genres; let idx = index"
+    tabindex="0"
+    [class.selected]="genre.selected"
+  >
+    <input type="checkbox" [id]="'checkbox-' + idx" [value]="genre.selected" (click)="onGenreClick(genre)" />
+    <span class="genre" [ngClass]="[genre.value | lowercase]"></span>
+    <label class="text" [innerText]="genre.value" [htmlFor]="'checkbox-' + idx"></label>
+  </li>
+</ul>
+<div class="clear-filters"><button class="btn clear-filter" (click)="clearFilters()">Clear Filters</button></div>

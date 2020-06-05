@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Movies } from '../types/movie.type';
-import { Genres } from '../types/genre.type';
+import { Genres } from '../models/genre.model';
+import { Movies } from '../models/movie.model';
 
 export enum MoviesActionType {
   loadMovies = '[Movies] Load Movies',

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as MoviesActions from '../actions/movies.actions';
-import { Movies } from '../types/movie.type';
+import { Movies } from '../models/movie.model';
 
 export interface MoviesState {
   error: string;

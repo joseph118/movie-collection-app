@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as HomeActions from '../actions/home.actions';
-import { Movies } from '../types/movie.type';
+import { Movies } from '../models/movie.model';
 
 export interface HomeState {
   error: string;

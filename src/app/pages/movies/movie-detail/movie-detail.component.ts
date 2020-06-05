@@ -4,8 +4,8 @@ import { ApplicationState, selectMovie } from '../../../reducers';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
-import { Movie } from '../../../types/movie.type';
 import { Location } from '@angular/common';
+import { Movie } from '../../../models/movie.model';
 
 @Component({
   selector: 'app-movie-detail',

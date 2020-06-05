@@ -1,5 +1,5 @@
-import { genreType } from '../../types/genre.type';
-import { Movie } from '../../types/movie.type';
+import { Movie } from '../../models/movie.model';
+import { genreType } from '../../models/genre.model';
 
 export const movies: Movie[] = [
   {

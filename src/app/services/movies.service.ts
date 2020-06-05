@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { movies } from './data/movie.mock-data';
-import { Movie, Movies } from '../types/movie.type';
-import { GenreType } from '../types/genre.type';
-import { delay, map, tap } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
+import { Movie, Movies } from '../models/movie.model';
+import { GenreType } from '../models/genre.model';
 
 @Injectable({
   providedIn: 'root'

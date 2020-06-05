@@ -1,0 +1,77 @@
+@import '../../../../../scss/variables';
+@import '../../../../../scss/mixins';
+
+:host {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background-color: $color1;
+  padding: 5px;
+  color: black;
+  max-height: 100vh;
+  overflow-y: auto;
+
+  .genre-list {
+    .genre-checkbox {
+      text-align: center;
+      margin: 0 4px 5px 4px;
+      vertical-align: middle;
+      display: block;
+      border-radius: 3px;
+      padding: 3px;
+      transition: background-color 0.6s ease-in-out, color 0.3s ease-in-out, transform 0.6s ease-in-out;
+      outline-color: $color3;
+
+      input {
+        display: none;
+      }
+
+      label {
+        vertical-align: middle;
+        text-align: center;
+        position: relative;
+        text-transform: capitalize;
+        font-size: 14px;
+        z-index: 1;
+        padding: 2px 0;
+        display: inline-block;
+        margin-left: 5px;
+
+        &:before {
+          // hide text
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+        }
+      }
+
+      &:hover:not(.selected) {
+        background-color: transparentize($color2, 0.6);
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &.selected {
+        color: $color5;
+        background-color: $color3;
+        outline-color: $color6;
+      }
+
+      &:hover label {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .clear-filters {
+  }
+}

@@ -4,7 +4,7 @@ import { ApplicationState, selectTopRatedMovies } from '../../../reducers';
 import { loadTopRatedMovies } from '../../../actions/home.actions';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Movies } from '../../../types/movie.type';
+import { Movies } from '../../../models/movie.model';
 
 @Component({
   selector: 'app-home',

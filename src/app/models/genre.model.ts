@@ -26,3 +26,5 @@ export const genreType = {
 };
 
 export type Genres = GenreType[];
+
+export const genreList: Genres = Object.keys(genreType).map(key => genreType[key]);
