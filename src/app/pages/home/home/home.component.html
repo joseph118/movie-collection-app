@@ -1,7 +1,7 @@
 <section>
   <h1>Top 5 Highest rated movies</h1>
 
-  <div class="video-container">
+  <div class="video-container" [ngClass]="{ loading: loading$ | async, error: error$ | async }">
     <app-video-card
       *ngFor="let movie of topRatedMovies$ | async"
       [movie]="movie"

@@ -1,9 +1,16 @@
 .video-container {
   text-align: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  overflow: hidden;
 
   &.error,
   &.loading {
-    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
   }
 
   @include media-breakpoint-up(sm) {
