@@ -56,6 +56,9 @@
 
         &:hover:not(.selected) {
           background-color: transparentize($color2, 0.6);
+        }
+
+        &:hover {
           transform: scale(1.05);
         }
 
