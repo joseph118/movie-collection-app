@@ -30,15 +30,24 @@ html {
   li,
   button {
     &:focus {
-      outline-color: $color2;
+      outline-color: transparentize($color5, 0.7);
     }
   }
 
   button {
     border: none;
-    background: $color7;
+    text-align: center;
+    text-decoration: none;
+    background-color: $color7;
     color: $white;
     border-radius: 2px;
+    padding: 7px 16px;
+    transition: background 0.4s ease-in-out;
+
+    &:hover {
+      background-color: $color8;
+      cursor: pointer;
+    }
   }
 
   @include media-breakpoint-up(md) {
