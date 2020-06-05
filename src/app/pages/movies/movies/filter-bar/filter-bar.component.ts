@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { clearFilters, filterByGenre } from '../../../../actions/filters.actions';
+import { clearFilters, filterByGenre, filterByText } from '../../../../actions/filters.actions';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '../../../../reducers';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,8 @@ export interface GenreFilter {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterBarComponent implements OnInit, OnDestroy {
-  genres: GenreFilter[];
+  searchModel: string;
+  genres: GenreFilters;
   constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {
     this.genres = genreList.map(genre => ({ value: genre, selected: false }));
   }
@@ -40,12 +41,18 @@ export class FilterBarComponent implements OnInit, OnDestroy {
 
   clearFilters(): void {
     this.genres = this.genres.map(genre => ({ ...genre, selected: false }));
+    this.searchModel = '';
     this.store.dispatch(clearFilters({ payload: true }));
   }
 
   onGenreClick(genre: GenreFilter): void {
     genre.selected = !genre.selected;
     this.triggerFilter();
+  }
+
+  onSearch(data: KeyboardEvent): void {
+    const value = (data.target as HTMLInputElement).value;
+    this.store.dispatch(filterByText({ payload: value }));
   }
 
   private triggerFilter(): void {

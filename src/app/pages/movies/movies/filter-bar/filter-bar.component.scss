@@ -5,84 +5,103 @@
   display: block;
   position: relative;
 
-  .genre-list {
-    text-align: center;
-    z-index: 5;
+  .genre-container,
+  .search-container {
     background-color: $color1;
-    padding: 5px;
     color: black;
+    text-align: center;
+    padding: 6px;
+    border-radius: 1px;
+  }
 
-    .genre-checkbox {
-      text-align: center;
-      margin: 0 8px 5px 8px;
-      vertical-align: middle;
-      display: inline-block;
-      border-radius: 3px;
-      padding: 3px;
-      transition: background-color 0.6s ease-in-out, color 0.3s ease-in-out, transform 0.6s ease-in-out;
-      outline-color: $color3;
+  .search-container {
+    label,
+    input {
+      width: 100%;
+      max-width: 250px;
+      margin: 0 auto;
+    }
 
-      input {
-        display: none;
-      }
+    label {
+      text-align: left;
+    }
 
-      label {
-        vertical-align: middle;
-        text-align: center;
+    input {
+      margin-top: 4px;
+
+      @include add-bg-icon('search.svg', 3px 3px, 20px 20px);
+
+      &::-webkit-search-cancel-button {
         position: relative;
-        text-transform: capitalize;
-        font-size: 14px;
-        z-index: 1;
-        padding: 2px 0;
-        display: inline-block;
-        margin-left: 5px;
-
-        &:before {
-          // hide text
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          z-index: 2;
-        }
-      }
-
-      &:hover:not(.selected) {
-        background-color: transparentize($color2, 0.6);
-      }
-
-      &:hover {
-        transform: scale(1.05);
-      }
-
-      &.selected {
-        color: $color5;
-        background-color: $color3;
-        outline-color: $color6;
-      }
-
-      &:hover label {
-        cursor: pointer;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        color: $color1;
+        background: $color1;
       }
     }
   }
 
-  .clear-filters {
-    position: absolute;
-    right: 3px;
-    bottom: 3px;
+  .genre-container {
+    position: relative;
+    z-index: 5;
+    margin-top: 5px;
 
-    button {
-      font-size: 12px;
-      background-color: transparent;
-      color: black;
-      border-radius: 12px;
-      padding: 3px 6px;
+    .genre-list {
+      .genre-checkbox {
+        text-align: center;
+        margin: 0 8px 5px 8px;
+        vertical-align: middle;
+        display: inline-block;
+        border-radius: 3px;
+        padding: 3px;
+        transition: background-color 0.6s ease-in-out, color 0.3s ease-in-out, transform 0.6s ease-in-out;
+        outline-color: $color3;
 
-      &:hover {
-        background-color: transparentize($color2, 0.6);
+        .text {
+          vertical-align: middle;
+          text-align: center;
+          position: relative;
+          text-transform: capitalize;
+          font-size: 14px;
+          padding: 2px 0;
+          display: inline-block;
+          margin-left: 5px;
+        }
+
+        &:hover:not(.selected) {
+          background-color: transparentize($color2, 0.6);
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+
+        &.selected {
+          color: $color5;
+          background-color: $color3;
+          outline-color: $color6;
+        }
+      }
+    }
+
+    .clear-container {
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+
+      button {
+        font-size: 12px;
+        background-color: transparent;
+        color: black;
+        border-radius: 3px;
+        padding: 3px 6px;
+
+        &:hover {
+          background-color: transparentize($color2, 0.6);
+        }
       }
     }
   }

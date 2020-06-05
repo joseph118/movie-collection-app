@@ -1,7 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { ApplicationState } from '../../reducers';
-import { filterByText } from '../../actions/filters.actions';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +7,7 @@ import { filterByText } from '../../actions/filters.actions';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  onSearch(data: KeyboardEvent): void {
-    const value = (data.target as HTMLInputElement).value;
-    this.store.dispatch(filterByText({ payload: value }));
-  }
 }

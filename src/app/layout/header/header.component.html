@@ -5,17 +5,8 @@
         <a class="link menu-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
       <li>
-        <a
-          class="link menu-link"
-          routerLink="/movies"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Movies</a
-        >
+        <a class="link menu-link" routerLink="/movies" routerLinkActive="active">Movies</a>
       </li>
     </ul>
   </nav>
-  <div class="search-container">
-    <input type="search" (search)="onSearch($event)" placeholder="Search..." />
-  </div>
 </header>

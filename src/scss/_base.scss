@@ -23,6 +23,13 @@ html {
 
   input {
     color: $color5;
+    line-height: 20px;
+    min-height: 28px;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 4px 7px 4px 28px;
+    width: 100%;
+    border: 1px solid $color4;
   }
 
   a,
