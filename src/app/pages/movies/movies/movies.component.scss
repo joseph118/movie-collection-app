@@ -18,10 +18,12 @@
 
     .genre-list {
       .genre-checkbox {
+        text-align: center;
         margin: 0 4px 5px 4px;
         vertical-align: middle;
         display: block;
         border-radius: 3px;
+        padding: 3px;
         transition: background-color 0.6s ease-in-out, color 0.3s ease-in-out, transform 0.6s ease-in-out;
 
         input {
@@ -29,12 +31,15 @@
         }
 
         label {
+          vertical-align: middle;
           text-align: center;
           position: relative;
           text-transform: capitalize;
           font-size: 14px;
           z-index: 1;
           padding: 2px 0;
+          display: inline-block;
+          margin-left: 5px;
 
           &:before {
             // hide text

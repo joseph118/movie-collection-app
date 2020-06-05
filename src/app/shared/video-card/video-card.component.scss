@@ -1,6 +1,5 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
-@import './scss/icons';
 
 $card-icon-size: 20px !default;
 $genre-font-size: 9px !default;
@@ -73,14 +72,6 @@ $text-genre-gap-height: 4px !default;
           padding: 4px;
           backdrop-filter: blur(3px);
           vertical-align: center;
-
-          &:before {
-            content: '';
-            margin: 0 auto;
-            display: block;
-            width: $card-icon-size;
-            height: $card-icon-size;
-          }
 
           .text {
             position: absolute;

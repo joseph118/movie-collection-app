@@ -1,0 +1,59 @@
+$card-icon-size: 20px !default;
+
+.genre {
+  display: inline-block;
+  vertical-align: middle;
+
+  &:before {
+    content: '';
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: middle;
+    width: $card-icon-size;
+    height: $card-icon-size;
+  }
+
+  &.action:before {
+    @include add-bg-icon('genres/action.svg');
+  }
+
+  &.adventure:before {
+    @include add-bg-icon('genres/adventure.svg');
+  }
+
+  &.biography:before {
+    @include add-bg-icon('genres/biography.svg');
+  }
+
+  &.comedy:before {
+    @include add-bg-icon('genres/comedy.svg');
+  }
+
+  &.crime:before {
+    @include add-bg-icon('genres/crime.svg');
+  }
+
+  &.drama:before {
+    @include add-bg-icon('genres/drama.svg');
+  }
+
+  &.history:before {
+    @include add-bg-icon('genres/history.svg');
+  }
+
+  &.mystery:before {
+    @include add-bg-icon('genres/mystery.svg');
+  }
+
+  &.scifi:before {
+    @include add-bg-icon('genres/scifi.svg');
+  }
+
+  &.sport:before {
+    @include add-bg-icon('genres/sport.svg');
+  }
+
+  &.thriller:before {
+    @include add-bg-icon('genres/thriller.svg');
+  }
+}
