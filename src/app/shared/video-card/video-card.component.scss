@@ -14,7 +14,6 @@ $text-genre-gap-height: 4px !default;
   display: inline-block;
   vertical-align: top;
   transition: transform 0.3s ease-in-out;
-  padding: 10px;
   margin: 10px 0;
 
   &:hover {
@@ -22,107 +21,113 @@ $text-genre-gap-height: 4px !default;
   }
 
   a {
+    width: 100%;
+    height: 100%;
     text-align: center;
 
-    .top-container {
-      position: relative;
-      display: inline-block;
-      width: 100%;
+    .container {
+      padding: 10px;
 
-      img {
-        min-height: 160px;
-      }
+      .top-container {
+        position: relative;
+        display: inline-block;
+        width: 100%;
 
-      .top-bar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-
-        .rating {
-          position: absolute;
-          font-weight: 600;
-          background-color: transparentize($black, 0.3);
-          padding: 4px;
-          border-radius: 100%;
-          color: $white;
-          font-size: $inner-card-font-size;
-          width: $card-icon-size;
-          height: $card-icon-size;
-          line-height: 19px;
-          left: 0;
-          top: 0;
+        img {
+          min-height: 160px;
         }
-      }
 
-      .bottom-bar {
-        position: absolute;
-        width: 30px;
-        top: 0;
-        right: 0;
+        .top-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
 
-        .genre {
-          margin-top: 5px;
-          display: inline-block;
-          position: relative;
-          text-align: center;
-          font-size: $genre-font-size;
-          background-color: transparentize($white, 0.3);
-          border-radius: 15px;
-          padding: 4px;
-          backdrop-filter: blur(3px);
-          vertical-align: center;
-
-          .text {
+          .rating {
             position: absolute;
-            right: calc(100% + #{$text-genre-gap-height});
-            top: 50%;
-            transform: translateY(-50%);
-            text-transform: capitalize;
-            opacity: 0;
-            background-color: transparentize($white, 0.1);
-            transition: opacity 0.3s ease-in-out;
-            border-radius: 3px;
-            padding: 3px;
-            color: $black;
-            border-bottom: 1px solid $color1;
+            font-weight: 600;
+            background-color: transparentize($black, 0.3);
+            padding: 4px;
+            border-radius: 100%;
+            color: $white;
+            font-size: $inner-card-font-size;
+            width: $card-icon-size;
+            height: $card-icon-size;
+            line-height: 19px;
+            left: 0;
+            top: 0;
+          }
+        }
 
-            &:before {
-              content: '';
+        .bottom-bar {
+          position: absolute;
+          width: 30px;
+          top: 0;
+          right: 0;
+
+          .genre {
+            margin-top: 5px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-size: $genre-font-size;
+            background-color: transparentize($white, 0.3);
+            border-radius: 15px;
+            padding: 4px;
+            backdrop-filter: blur(3px);
+            vertical-align: center;
+
+            .text {
               position: absolute;
-              height: 4px;
-              width: $text-genre-gap-height;
-              background-color: transparentize($white, 0.2);
+              right: calc(100% + #{$text-genre-gap-height});
               top: 50%;
               transform: translateY(-50%);
-              right: -($text-genre-gap-height);
-            }
-          }
+              text-transform: capitalize;
+              opacity: 0;
+              background-color: transparentize($white, 0.1);
+              transition: opacity 0.3s ease-in-out;
+              border-radius: 3px;
+              padding: 3px;
+              color: $black;
+              border-bottom: 1px solid $color1;
 
-          &:hover .text {
-            opacity: 1;
+              &:before {
+                content: '';
+                position: absolute;
+                height: 4px;
+                width: $text-genre-gap-height;
+                background-color: transparentize($white, 0.2);
+                top: 50%;
+                transform: translateY(-50%);
+                right: -($text-genre-gap-height);
+              }
+            }
+
+            &:hover .text {
+              opacity: 1;
+            }
           }
         }
       }
-    }
 
-    .bottom-container {
-      text-align: left;
+      .bottom-container {
+        text-align: left;
 
-      .name {
-        font-size: $card-font-size-title;
-        font-weight: 600;
-        margin-top: 5px;
-      }
-      .length {
-        font-size: $card-font-size-length;
-        font-weight: 300;
-        margin-top: 2px;
-      }
-      .description {
-        font-size: $card-font-size-description;
-        font-weight: 500;
-        margin-top: 4px;
+        .name {
+          font-size: $card-font-size-title;
+          font-weight: 600;
+          margin-top: 5px;
+        }
+        .length {
+          font-size: $card-font-size-length;
+          font-weight: 300;
+          margin-top: 2px;
+        }
+        .description {
+          font-size: $card-font-size-description;
+          font-weight: 500;
+          margin-top: 4px;
+        }
       }
     }
   }
