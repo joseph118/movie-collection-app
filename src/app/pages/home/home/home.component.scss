@@ -3,14 +3,44 @@
 
 :host {
   display: block;
-  padding: 20px;
 
-  h1 {
-    font-size: 26px;
-    margin-bottom: 12px;
+  section {
+    margin-top: 10px;
+    position: relative;
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 12px;
+      color: $white;
+    }
+
+    .video-container {
+      justify-content: left;
+    }
+
+    &:after {
+      margin: 20px auto 0 auto;
+      content: '';
+      width: 20%;
+      background-color: $color1;
+      height: 2px;
+      display: block;
+    }
   }
 
-  .video-container {
-    justify-content: left;
+  @include media-breakpoint-up(sm) {
+    section {
+      padding: 10px;
+
+      &:after {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    section {
+      padding: 20px;
+    }
   }
 }
