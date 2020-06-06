@@ -40,8 +40,6 @@ Configs can be found in the <u>**root and configs folder**</u>.
 Webpack is configured to add the PostCSS loader which allows us to execute _autoprefixer_ and _postcss-pxtorem_
 on CSS. For production builds, this would also include _cssnano_.
 
-The plugins' description is in the _Development server_ below;
-
 ### Development server
 
 The development server comes configured with BrowserSync which proxies the DEV environment, and as well as HMR.
@@ -64,7 +62,7 @@ The artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
-Run `npm run test` to execute the unit tests using [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests using [Karma](https://karma-runner.github.io).
 
 ## Other
 
