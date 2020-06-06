@@ -20,7 +20,8 @@ export const reducer = createReducer(
   on(MoviesActions.getMovies, state => ({
     ...state,
     error: '',
-    loading: true
+    loading: true,
+    movies: null
   })),
   on(MoviesActions.getMoviesSuccess, (state, action) => ({
     ...state,
@@ -30,7 +31,7 @@ export const reducer = createReducer(
   })),
   on(MoviesActions.getMoviesFailure, (state, action) => ({
     ...state,
-    movies: [],
+    movies: null,
     error: action.payload,
     loading: false
   }))
