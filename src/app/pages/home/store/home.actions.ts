@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Movies } from '../models/movie.model';
+import { Movies } from '../../../models/movie.model';
 
 export enum HomeActionType {
   loadTopRatedMovies = '[Home] Load Top Rated Movies',

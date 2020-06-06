@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadTopRatedMovies, HomeActionType } from '../actions/home.actions';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { MoviesService } from '../services/movies.service';
+import { MoviesService } from '../../../services/movies.service';
+import { HomeActionType, loadTopRatedMovies } from './home.actions';
 
 @Injectable()
 export class HomeEffects {

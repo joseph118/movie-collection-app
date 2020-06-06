@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { clearFilters, filterByGenre, filterByText, FiltersActionType } from '../actions/filters.actions';
+import { clearFilters, filterByGenre, filterByText, FiltersActionType } from './filters.actions';
 import { concatMap, map, tap, withLatestFrom } from 'rxjs/operators';
-import { loadMovies } from '../actions/movies.actions';
+import { loadMovies } from '../movies/movies.actions';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ApplicationState, selectFilterGenres, selectFilterText } from '../reducers';
+import { State, selectFilterGenres, selectFilterText } from '../../../../reducers';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -50,5 +50,5 @@ export class FiltersEffects {
     )
   );
 
-  constructor(private actions$: Actions, private store$: Store<ApplicationState>, private router: Router) {}
+  constructor(private actions$: Actions, private store$: Store<State>, private router: Router) {}
 }

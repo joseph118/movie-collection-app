@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadMovies, MoviesActionType } from '../actions/movies.actions';
+import { loadMovies, MoviesActionType } from './movies.actions';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { MoviesService } from '../services/movies.service';
+import { MoviesService } from '../../../../services/movies.service';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 

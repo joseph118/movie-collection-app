@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Genres } from '../models/genre.model';
+import { Genres } from '../../../../models/genre.model';
 
 export enum FiltersActionType {
   filterByText = '[Filters] Filter By Text',

@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
-import * as FiltersAction from '../actions/filters.actions';
-import { GenreType } from '../models/genre.model';
+import * as FiltersAction from '../filters.actions';
+import { GenreType } from '../../../../../models/genre.model';
 
 export interface FilterState {
   text: string;
   genres: GenreType[];
 }
 
-const initialFilterState: FilterState = {
+export const initialFilterState: FilterState = {
   text: '',
   genres: []
 };

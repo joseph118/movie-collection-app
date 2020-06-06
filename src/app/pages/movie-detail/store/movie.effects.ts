@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { getMovie, MovieActionType } from '../actions/movie.actions';
 import { catchError, concatMap, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
-import { of, throwError } from 'rxjs';
-import { selectMovies } from '../reducers';
+import { of } from 'rxjs';
+import { selectMovies } from '../../../reducers';
 import { Store } from '@ngrx/store';
-import { MoviesService } from '../services/movies.service';
+import { MoviesService } from '../../../services/movies.service';
 
 @Injectable()
 export class MovieEffects {

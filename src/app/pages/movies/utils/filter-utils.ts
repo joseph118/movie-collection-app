@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Genres } from '../models/genre.model';
+import { Genres } from '../../../models/genre.model';
 
 export class FilterUtils {
   public static getFilterQueryParams(

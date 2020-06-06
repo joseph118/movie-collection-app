@@ -1,15 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  ApplicationState,
-  selectTopRatedMovies,
-  selectTopRatedMoviesError,
-  selectTopRatedMoviesLoading
-} from '../../../reducers';
-import { loadTopRatedMovies } from '../../../actions/home.actions';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Movies } from '../../../models/movie.model';
+import * as fromHome from '../store/reducers';
+import { loadTopRatedMovies } from '../store/home.actions';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +13,7 @@ import { Movies } from '../../../models/movie.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(private store: Store<fromHome.State>) {}
 
   topRatedMovies$: Observable<Movies>;
   loading$: Observable<boolean>;
@@ -26,8 +21,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadTopRatedMovies({ payload: environment.home.numberOfTopRatedElements }));
-    this.topRatedMovies$ = this.store.select(selectTopRatedMovies);
-    this.loading$ = this.store.select(selectTopRatedMoviesLoading);
-    this.error$ = this.store.select(selectTopRatedMoviesError);
+    this.topRatedMovies$ = this.store.select(fromHome.getTopRatedMovies);
+    this.loading$ = this.store.select(fromHome.getTopRatedLoading);
+    this.error$ = this.store.select(fromHome.getTopRatedError);
   }
 }

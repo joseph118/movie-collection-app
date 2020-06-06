@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ApplicationState, selectMovie, selectMovieError, selectMovieLoading } from '../../../reducers';
+import { State, selectMovie, selectMovieError, selectMovieLoading } from '../../../reducers';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
@@ -19,7 +19,7 @@ export class MovieDetailComponent implements OnInit {
   error$: Observable<string>;
 
   constructor(
-    private store: Store<ApplicationState>,
+    private store: Store<State>,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location

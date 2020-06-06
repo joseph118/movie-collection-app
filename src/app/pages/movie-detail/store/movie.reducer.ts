@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import * as MovieActions from '../actions/movie.actions';
-import { Movie } from '../models/movie.model';
+import { Movie } from '../../../models/movie.model';
+
+export const MovieFeatureKey = 'movie';
 
 export interface MovieState {
   error: string;
@@ -8,7 +10,7 @@ export interface MovieState {
   data: Movie | null;
 }
 
-const initialMovieState: MovieState = {
+export const initialMovieState: MovieState = {
   error: '',
   loading: false,
   data: null

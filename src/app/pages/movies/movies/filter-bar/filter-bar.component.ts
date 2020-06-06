@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { clearFilters, filterByGenre, filterByText } from '../../../../actions/filters.actions';
+import { clearFilters, filterByGenre, filterByText } from '../../store/filters/filters.actions';
 import { Store } from '@ngrx/store';
-import { ApplicationState } from '../../../../reducers';
+import { State } from '../../../../reducers';
 import { ActivatedRoute } from '@angular/router';
 import { genreList, GenreType } from '../../../../models/genre.model';
-import { FilterUtils } from '../../../../utils/filter-utils';
+import { FilterUtils } from '../../utils/filter-utils';
 
 export type GenreFilters = GenreFilter[];
 
@@ -22,7 +22,7 @@ export interface GenreFilter {
 export class FilterBarComponent implements OnInit, OnDestroy {
   searchModel: string;
   genres: GenreFilters;
-  constructor(private store: Store<ApplicationState>, private activatedRoute: ActivatedRoute) {
+  constructor(private store: Store<State>, private activatedRoute: ActivatedRoute) {
     this.genres = genreList.map(genre => ({ value: genre, selected: false }));
   }
 
