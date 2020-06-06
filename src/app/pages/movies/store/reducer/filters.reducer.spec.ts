@@ -25,7 +25,7 @@ describe('FiltersReducer', () => {
     expect(state).toEqual({ ...initialState, genres: payload });
   });
 
-  it('should return an empty state', () => {
+  it('should return the state with empty text and genres', () => {
     const { initialState } = fromReducer;
     const payload = false;
     const action = fromActions.clearFilters({ payload });
