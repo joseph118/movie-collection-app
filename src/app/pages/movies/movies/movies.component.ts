@@ -4,7 +4,7 @@ import { loadMovies } from '../store/actions/movies.actions';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { genreList } from '../../../models/genre.model';
-import { Movies } from '../../../models/movie.model';
+import { Movie, Movies } from '../../../models/movie.model';
 import { FilterUtils } from '../utils/filter-utils';
 import { getMovieList, getMovieListError, getMovieListLoading, State } from '../store/reducer';
 
@@ -27,5 +27,9 @@ export class MoviesComponent implements OnInit {
     this.movies$ = this.store.select(getMovieList);
     this.loading$ = this.store.select(getMovieListLoading);
     this.error$ = this.store.select(getMovieListError);
+  }
+
+  trackMovieBy(index: number, item: Movie): number {
+    return item.id;
   }
 }

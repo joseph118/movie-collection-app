@@ -4,7 +4,7 @@
 
 <section class="video-container" [ngClass]="{ loading: loading$ | async, error: error$ | async }">
   <app-video-card
-    *ngFor="let movie of movies$ | async"
+    *ngFor="let movie of movies$ | async; trackBy: trackMovieBy"
     [movie]="movie"
     [routePath]="'detail/' + movie.key"
   ></app-video-card>

@@ -50,6 +50,12 @@ export class FilterBarComponent implements OnInit, OnDestroy {
     this.triggerFilter();
   }
 
+  onKeyUp(keyEvent: KeyboardEvent, genre: GenreFilter): void {
+    if (keyEvent.key === 'Enter') {
+      this.onGenreClick(genre);
+    }
+  }
+
   onSearch(data: KeyboardEvent): void {
     const value = (data.target as HTMLInputElement).value;
     this.store.dispatch(filterByText({ payload: value }));

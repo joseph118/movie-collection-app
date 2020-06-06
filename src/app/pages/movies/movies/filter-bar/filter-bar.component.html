@@ -16,6 +16,7 @@
       tabindex="0"
       [class.selected]="genre.selected"
       (click)="onGenreClick(genre)"
+      (keyup)="onKeyUp($event, genre)"
     >
       <span class="genre" [ngClass]="[genre.value | lowercase]"></span>
       <span class="text" [innerText]="genre.value"></span>
