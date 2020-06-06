@@ -40,8 +40,6 @@ export class MoviesService {
   public getFilteredMovies(text?: string, genres?: GenreType[]): Observable<Movies> {
     const filterText = text ? text.toLowerCase() : null;
 
-    console.log(text, genres);
-
     return this.getMovies().pipe(
       map(movies => {
         if (filterText) {
