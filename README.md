@@ -46,7 +46,10 @@ The plugins' description is in the _Development server_ below;
 
 The development server comes configured with BrowserSync which proxies the DEV environment, and as well as HMR.
 
-To run the dev environment, execute `npm start` or `npm run serve:dev`.
+To run the dev environment, execute;
+
+- `npm start`
+- or `npm run serve:dev`.
 
 The application will automatically reload if you change any of the angular files, while it will hot reload if you change the
 global styles.
@@ -61,7 +64,7 @@ The artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute the unit tests using [Karma](https://karma-runner.github.io).
 
 ## Other
 

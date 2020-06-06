@@ -7,17 +7,14 @@ export enum TopRatedMoviesActionType {
   getTopRatedMoviesFailure = '[Top Rated] Get Top Rated Movies Failure'
 }
 
-export const loadTopRatedMovies = createAction(
-  TopRatedMoviesActionType.getTopRatedMovies,
-  props<{ payload: number }>()
-);
+export const getTopRatedMovies = createAction(TopRatedMoviesActionType.getTopRatedMovies, props<{ payload: number }>());
 
-export const loadTopRatedMoviesSuccess = createAction(
+export const getTopRatedMoviesSuccess = createAction(
   TopRatedMoviesActionType.getTopRatedMoviesSuccess,
   props<{ payload: Movies }>()
 );
 
-export const loadTopRatedMoviesFailure = createAction(
+export const getTopRatedMoviesFailure = createAction(
   TopRatedMoviesActionType.getTopRatedMoviesFailure,
   props<{ payload: string }>()
 );

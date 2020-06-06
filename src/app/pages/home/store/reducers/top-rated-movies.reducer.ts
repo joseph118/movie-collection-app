@@ -8,7 +8,7 @@ export interface State {
   movies: Movies | null;
 }
 
-const initialState: State = {
+export const initialState: State = {
   error: '',
   loading: false,
   movies: null
@@ -17,19 +17,19 @@ const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(TopRatedMoviesActions.loadTopRatedMovies, state => ({
+  on(TopRatedMoviesActions.getTopRatedMovies, state => ({
     ...state,
-    movies: [],
+    movies: null,
     error: '',
     loading: true
   })),
-  on(TopRatedMoviesActions.loadTopRatedMoviesSuccess, (state, action) => ({
+  on(TopRatedMoviesActions.getTopRatedMoviesSuccess, (state, action) => ({
     ...state,
     movies: action.payload,
     error: '',
     loading: false
   })),
-  on(TopRatedMoviesActions.loadTopRatedMoviesFailure, (state, action) => ({
+  on(TopRatedMoviesActions.getTopRatedMoviesFailure, (state, action) => ({
     ...state,
     movies: null,
     loading: false,

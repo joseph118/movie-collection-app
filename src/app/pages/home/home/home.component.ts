@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Movies } from '../../../models/movie.model';
 import * as fromHome from '../store/reducers';
-import { loadTopRatedMovies } from '../store/top-rated-movies.actions';
+import { getTopRatedMovies } from '../store/top-rated-movies.actions';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   error$: Observable<string>;
 
   ngOnInit(): void {
-    this.store.dispatch(loadTopRatedMovies({ payload: environment.home.numberOfTopRatedElements }));
+    this.store.dispatch(getTopRatedMovies({ payload: environment.home.numberOfTopRatedElements }));
     this.topRatedMovies$ = this.store.select(fromHome.getTopRatedMovies);
     this.loading$ = this.store.select(fromHome.getTopRatedMoviesLoading);
     this.error$ = this.store.select(fromHome.getTopRatedMoviesError);
