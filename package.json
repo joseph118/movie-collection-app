@@ -10,9 +10,7 @@
     "build:production": "ng build --configuration=production",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "source-explorer": "source-map-explorer dist/movie-collection-app/main*.js dist/movie-collection-app/pages-*.js",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
