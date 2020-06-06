@@ -29,7 +29,7 @@ describe('TopRatedMoviesEffects', () => {
     moviesService = TestBed.inject(MoviesService);
   });
 
-  it('should dispatch getTopRatedMoviesSuccess action when getTopRatedMovies action is dispatched', () => {
+  it('should request movies from service and return getTopRatedMoviesSuccess action with payload', done => {
     const responseData = [];
     moviesService.getMoviesSortedByRating.and.returnValue(of(responseData));
 
@@ -38,6 +38,7 @@ describe('TopRatedMoviesEffects', () => {
     effects.topRatedMovies$.subscribe(action => {
       expect(action.type).toBe(fromActions.TopRatedMoviesActionType.getTopRatedMoviesSuccess);
       expect(action.payload).toEqual(responseData);
+      done();
     });
   });
 });
