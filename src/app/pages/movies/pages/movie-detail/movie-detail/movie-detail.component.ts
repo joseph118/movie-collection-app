@@ -1,11 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State, selectMovie, selectMovieError, selectMovieLoading } from '../../../../../reducers';
 import { ActivatedRoute, Router } from '@angular/router';
-import { getMovie } from '../../../actions/movie.actions';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { Movie } from '../../../../../models/movie.model';
+import { getMovieDetail, getMovieDetailError, getMovieDetailLoading, State } from '../store/reducers';
+import { getMovieDetail as getMovieDetailAction } from '../store/movie-detail.actions';
 
 @Component({
   selector: 'app-movie-detail',
@@ -31,12 +31,12 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const movieId = this.activatedRoute.snapshot.params.id;
-    this.loading$ = this.store.select(selectMovieLoading);
-    this.error$ = this.store.select(selectMovieError);
+    this.loading$ = this.store.select(getMovieDetailLoading);
+    this.error$ = this.store.select(getMovieDetailError);
 
     if (movieId) {
-      this.store.dispatch(getMovie({ payload: movieId }));
-      this.movie$ = this.store.select(selectMovie);
+      this.store.dispatch(getMovieDetailAction({ payload: movieId }));
+      this.movie$ = this.store.select(getMovieDetail);
     } else {
       this.router.navigate(['/']);
     }
