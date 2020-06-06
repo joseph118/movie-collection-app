@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadMovies } from '../store/actions/movies.actions';
+import { getMovies } from '../store/actions/movies.actions';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { genreList } from '../../../models/genre.model';
@@ -23,7 +23,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     const filters = FilterUtils.getFilterQueryParams(this.activatedRoute, genreList);
-    this.store.dispatch(loadMovies({ payload: filters }));
+    this.store.dispatch(getMovies({ payload: filters }));
     this.movies$ = this.store.select(getMovieList);
     this.loading$ = this.store.select(getMovieListLoading);
     this.error$ = this.store.select(getMovieListError);

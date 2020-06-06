@@ -8,9 +8,9 @@ export enum MoviesActionType {
   getMoviesFailure = '[Movies] Load Movies Failure'
 }
 
-export const loadMovies = createAction(
+export const getMovies = createAction(
   MoviesActionType.getMovies,
   props<{ payload: { text?: string; genres?: Genres } }>()
 );
-export const loadMoviesSuccess = createAction(MoviesActionType.getMoviesSuccess, props<{ payload: Movies }>());
-export const loadMoviesFailure = createAction(MoviesActionType.getMoviesFailure, props<{ payload: string }>());
+export const getMoviesSuccess = createAction(MoviesActionType.getMoviesSuccess, props<{ payload: Movies }>());
+export const getMoviesFailure = createAction(MoviesActionType.getMoviesFailure, props<{ payload: string }>());

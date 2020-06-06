@@ -17,18 +17,18 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(MoviesActions.loadMovies, state => ({
+  on(MoviesActions.getMovies, state => ({
     ...state,
     error: '',
     loading: true
   })),
-  on(MoviesActions.loadMoviesSuccess, (state, action) => ({
+  on(MoviesActions.getMoviesSuccess, (state, action) => ({
     ...state,
     movies: action.payload,
     error: '',
     loading: false
   })),
-  on(MoviesActions.loadMoviesFailure, (state, action) => ({
+  on(MoviesActions.getMoviesFailure, (state, action) => ({
     ...state,
     movies: [],
     error: action.payload,

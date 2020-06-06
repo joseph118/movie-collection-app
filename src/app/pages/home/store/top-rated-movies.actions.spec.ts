@@ -10,7 +10,7 @@ describe('TopRatedMoviesAction', () => {
     const payload = [];
     const action = Actions.getTopRatedMoviesSuccess({ payload });
 
-    expect({ ...action }).toEqual({
+    expect(action).toEqual({
       type: Actions.TopRatedMoviesActionType.getTopRatedMoviesSuccess,
       payload
     });
@@ -20,7 +20,7 @@ describe('TopRatedMoviesAction', () => {
     const payload = 'error';
     const action = Actions.getTopRatedMoviesFailure({ payload });
 
-    expect({ ...action }).toEqual({
+    expect(action).toEqual({
       type: Actions.TopRatedMoviesActionType.getTopRatedMoviesFailure,
       payload
     });
