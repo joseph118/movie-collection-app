@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { clearFilters, filterByGenre, filterByText } from '../../store/filters/filters.actions';
+import { clearFilters, filterByGenre, filterByText } from '../../store/actions/filters.actions';
 import { Store } from '@ngrx/store';
 import { State } from '../../../../reducers';
 import { ActivatedRoute } from '@angular/router';

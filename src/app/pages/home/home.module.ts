@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HomeEffects } from './store/home.effects';
+import { TopRatedMoviesEffects } from './store/top-rated-movies.effects';
 import { homeFeatureKey, reducers } from './store/reducers';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { homeFeatureKey, reducers } from './store/reducers';
     CommonModule,
     HomeRoutingModule,
     StoreModule.forFeature(homeFeatureKey, reducers),
-    EffectsModule.forFeature([HomeEffects]),
+    EffectsModule.forFeature([TopRatedMoviesEffects]),
     SharedModule
   ]
 })

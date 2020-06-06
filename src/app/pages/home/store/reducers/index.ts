@@ -22,5 +22,5 @@ export const selectTopRatedMoviesState = createSelector(selectHomeState, (state:
 
 // Selectors
 export const getTopRatedMovies = createSelector(selectTopRatedMoviesState, fromTopRatedMovies.getTopRatedMovies);
-export const getTopRatedLoading = createSelector(selectTopRatedMoviesState, fromTopRatedMovies.getLoading);
-export const getTopRatedError = createSelector(selectTopRatedMoviesState, fromTopRatedMovies.getError);
+export const getTopRatedMoviesLoading = createSelector(selectTopRatedMoviesState, fromTopRatedMovies.getLoading);
+export const getTopRatedMoviesError = createSelector(selectTopRatedMoviesState, fromTopRatedMovies.getError);

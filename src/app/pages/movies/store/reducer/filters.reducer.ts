@@ -1,19 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
-import * as FiltersAction from '../filters.actions';
-import { GenreType } from '../../../../../models/genre.model';
+import * as FiltersAction from '../actions/filters.actions';
+import { GenreType } from '../../../../models/genre.model';
 
-export interface FilterState {
+export interface State {
   text: string;
   genres: GenreType[];
 }
 
-export const initialFilterState: FilterState = {
+export const initialState: State = {
   text: '',
   genres: []
 };
 
-export const filtersReducer = createReducer(
-  initialFilterState,
+export const reducer = createReducer(
+  initialState,
   on(FiltersAction.filterByGenre, (state, action) => ({ ...state, genres: action.payload })),
   on(FiltersAction.filterByGenreSuccess),
   on(FiltersAction.filterByText, (state, action) => ({ ...state, text: action.payload })),
@@ -21,3 +21,6 @@ export const filtersReducer = createReducer(
   on(FiltersAction.clearFilters, state => ({ text: '', genres: [] })),
   on(FiltersAction.clearFiltersSuccess)
 );
+
+export const getText = (state: State) => state.text;
+export const getGenres = (state: State) => state.genres;

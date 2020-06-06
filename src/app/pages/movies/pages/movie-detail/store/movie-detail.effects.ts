@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { getMovie, MovieActionType } from '../actions/movie.actions';
 import { catchError, concatMap, map, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { selectMovies } from '../../../reducers';
 import { Store } from '@ngrx/store';
-import { MoviesService } from '../../../services/movies.service';
+import { MoviesService } from '../../../../../services/movies.service';
+import { getMovieDetail, MovieDetailActionType } from './movie-detail.actions';
+import { getMovieList } from '../../../store/reducer';
 
 @Injectable()
-export class MovieEffects {
+export class MovieDetailEffects {
   getMovie$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getMovie),
-      concatMap(action => of(action).pipe(withLatestFrom(this.store$.select(selectMovies)))),
+      ofType(getMovieDetail),
+      concatMap(action => of(action).pipe(withLatestFrom(this.store$.select(getMovieList)))),
       map(([action, movies]) => {
         return {
           action: action,
@@ -21,7 +21,7 @@ export class MovieEffects {
       }),
       mergeMap(data => {
         if (data.cachedMovie) {
-          return of({ type: MovieActionType.getMovieSuccess, payload: data.cachedMovie });
+          return of({ type: MovieDetailActionType.getMovieDetailSuccess, payload: data.cachedMovie });
         } else {
           return this.movieService.getMovieByKey(data.action.payload).pipe(
             tap(movie => {
@@ -29,8 +29,10 @@ export class MovieEffects {
                 throw new Error('Error while retrieving movie, possibly may have been deleted.');
               }
             }),
-            map(movie => ({ type: MovieActionType.getMovieSuccess, payload: movie })),
-            catchError(error => of({ type: MovieActionType.getMovieFailure, payload: error || 'Load movie error' }))
+            map(movie => ({ type: MovieDetailActionType.getMovieDetailSuccess, payload: movie })),
+            catchError(error =>
+              of({ type: MovieDetailActionType.getMovieDetailFailure, payload: error || 'Load movie error' })
+            )
           );
         }
       })

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State, selectMovies, selectMoviesError, selectMoviesLoading } from '../../../reducers';
-import { loadMovies } from '../store/movies/movies.actions';
+import { loadMovies } from '../store/actions/movies.actions';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { genreList } from '../../../models/genre.model';

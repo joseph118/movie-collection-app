@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { clearFilters, filterByGenre, filterByText, FiltersActionType } from './filters.actions';
+import { clearFilters, filterByGenre, filterByText, FiltersActionType } from '../actions/filters.actions';
 import { concatMap, map, tap, withLatestFrom } from 'rxjs/operators';
-import { loadMovies } from '../movies/movies.actions';
+import { loadMovies } from '../actions/movies.actions';
 import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { State, selectFilterGenres, selectFilterText } from '../../../../reducers';
 import { Router } from '@angular/router';
+import { getFilterGenres, getFilterText } from '../reducer';
 
 @Injectable()
 export class FiltersEffects {
@@ -16,7 +16,7 @@ export class FiltersEffects {
     this.actions$.pipe(
       ofType(filterByGenre, filterByText),
       concatMap(action =>
-        of(action).pipe(withLatestFrom(this.store$.select(selectFilterText), this.store$.select(selectFilterGenres)))
+        of(action).pipe(withLatestFrom(this.store$.select(getFilterText), this.store$.select(getFilterGenres)))
       ),
       tap(([action, text, genres]) => {
         this.store$.dispatch(loadMovies({ payload: { genres, text } }));
@@ -50,5 +50,5 @@ export class FiltersEffects {
     )
   );
 
-  constructor(private actions$: Actions, private store$: Store<State>, private router: Router) {}
+  constructor(private actions$: Actions, private store$: Store, private router: Router) {}
 }

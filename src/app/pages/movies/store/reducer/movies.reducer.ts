@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import * as TopRatedMoviesActions from '../top-rated-movies.actions';
+import * as MoviesActions from '../actions/movies.actions';
 import { Movies } from '../../../../models/movie.model';
 
 export interface State {
@@ -8,7 +8,7 @@ export interface State {
   movies: Movies | null;
 }
 
-const initialState: State = {
+export const initialState: State = {
   error: '',
   loading: false,
   movies: null
@@ -17,26 +17,25 @@ const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(TopRatedMoviesActions.loadTopRatedMovies, state => ({
+  on(MoviesActions.loadMovies, state => ({
     ...state,
-    movies: [],
     error: '',
     loading: true
   })),
-  on(TopRatedMoviesActions.loadTopRatedMoviesSuccess, (state, action) => ({
+  on(MoviesActions.loadMoviesSuccess, (state, action) => ({
     ...state,
     movies: action.payload,
     error: '',
     loading: false
   })),
-  on(TopRatedMoviesActions.loadTopRatedMoviesFailure, (state, action) => ({
+  on(MoviesActions.loadMoviesFailure, (state, action) => ({
     ...state,
-    movies: null,
-    loading: false,
-    error: action.payload
+    movies: [],
+    error: action.payload,
+    loading: false
   }))
 );
 
 export const getLoading = (state: State) => state.loading;
 export const getError = (state: State) => state.error;
-export const getTopRatedMovies = (state: State) => state.movies;
+export const getMovies = (state: State) => state.movies;

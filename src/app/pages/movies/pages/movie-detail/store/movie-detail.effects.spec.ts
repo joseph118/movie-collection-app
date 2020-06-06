@@ -2,18 +2,18 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { HomeEffects } from './home.effects';
+import { MovieDetailEffects } from './movie-detail.effects';
 
-describe('HomeEffects', () => {
+describe('MovieDetailEffects', () => {
   let actions$: Observable<any>;
-  let effects: HomeEffects;
+  let effects: MovieDetailEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HomeEffects, provideMockActions(() => actions$)]
+      providers: [MovieDetailEffects, provideMockActions(() => actions$)]
     });
 
-    effects = TestBed.inject(HomeEffects);
+    effects = TestBed.inject(MovieDetailEffects);
   });
 
   it('should be created', () => {

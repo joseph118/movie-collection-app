@@ -3,18 +3,18 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MoviesService } from '../../../services/movies.service';
-import { HomeActionType, loadTopRatedMovies } from './home.actions';
+import { TopRatedMoviesActionType, loadTopRatedMovies } from './top-rated-movies.actions';
 
 @Injectable()
-export class HomeEffects {
+export class TopRatedMoviesEffects {
   topRatedMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadTopRatedMovies),
       mergeMap(action =>
         this.movieService.getMoviesSortedByRating(action.payload, 'DESC').pipe(
-          map(movies => ({ type: HomeActionType.loadTopRatedMoviesSuccess, payload: movies })),
+          map(movies => ({ type: TopRatedMoviesActionType.getTopRatedMoviesSuccess, payload: movies })),
           catchError(() =>
-            of({ type: HomeActionType.loadTopRatedMoviesFailure, payload: 'Load top rated movies error' })
+            of({ type: TopRatedMoviesActionType.getTopRatedMoviesFailure, payload: 'Load top rated movies error' })
           )
         )
       )

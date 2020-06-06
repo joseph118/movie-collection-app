@@ -4,6 +4,10 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: MovieDetailComponent
+  },
+  {
     path: ':id',
     component: MovieDetailComponent
   },

@@ -8,6 +8,10 @@ const routes: Routes = [
     component: MoviesComponent
   },
   {
+    path: 'details/:id',
+    loadChildren: () => import('./pages/movie-detail/movie-detail.module').then(m => m.MovieDetailModule)
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
