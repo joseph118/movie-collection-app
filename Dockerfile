@@ -1,18 +1,16 @@
-FROM node:13.3.0 AS compile-image
+FROM node:latest AS node
 
 # set working directory
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install
-
+# Copy and set environment to build
 COPY . .
 
+RUN npm install
 RUN npm run build:production
 
-FROM nginx
 
-COPY --from=build /app/dist/out/ /usr/share/nginx/html
+FROM nginx:alpine
 
-COPY /nginx-custom.conf /etc/nginx/conf.d/default.conf
+## Copy artifacts to destination
+COPY --from=node /app/dist /usr/share/nginx/html

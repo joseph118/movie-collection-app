@@ -64,6 +64,16 @@ The artifacts will be stored in the `dist/` directory.
 
 Run `npm test` to execute the unit tests using [Karma](https://karma-runner.github.io).
 
+## Docker
+
+The project comes with a docker file with configurations to set up the environment and as
+well as serving them on nginx.
+
+The following scripts can be used to build and run the image;
+
+- `npm run docker:build`
+- `npm run docker:run`
+
 ## Other
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.

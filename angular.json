@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/movie-collection-app",
+            "deployUrl": "/",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -94,7 +95,7 @@
             "styles": ["src/styles.scss"],
             "scripts": [],
             "customWebpackConfig": {
-              "path": "./configs/webpack.config.js",
+              "path": "./configs/webpack.config.prod.js",
               "replaceDuplicatePlugins": true
             }
           }

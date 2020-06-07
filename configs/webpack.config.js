@@ -4,7 +4,8 @@ const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack
 
 const devHost = 'localhost',
   devServerPort = 4200,
-  browserSyncPort = 3000;
+  browserSyncPort = 3000,
+  coverageServerPort = 4201;
 
 module.exports = {
   module: {
@@ -50,6 +51,13 @@ module.exports = {
         reload: false
       }
     ),
+    new BrowserSyncPlugin({
+      // Coverage Server
+      host: devHost,
+      port: coverageServerPort,
+      server: { baseDir: 'coverage' },
+      ui: false
+    }),
     new DuplicatePackageCheckerPlugin({
       verbose: true,
       emitError: true,
