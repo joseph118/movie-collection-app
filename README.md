@@ -78,6 +78,10 @@ The following scripts can be used to build and run the image;
 - `npm run docker:build`
 - `npm run docker:run`
 
+To run the latest commit, pull the container using the following command;
+
+- `docker pull joseph941/movie-collection-app:latest`
+
 ## Other
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
