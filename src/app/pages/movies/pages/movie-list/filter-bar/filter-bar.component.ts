@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { clearFilters, filterByGenre, filterByText } from '../../store/actions/filters.actions';
+import { clearFilters, filterByGenre, filterByText } from '../../../store/actions/filters.actions';
 import { Store } from '@ngrx/store';
-import { State } from '../../../../reducers';
+import { State } from '../../../../../reducers';
 import { ActivatedRoute } from '@angular/router';
-import { genreList, GenreType } from '../../../../models/genre.model';
-import { FilterUtils } from '../../utils/filter-utils';
+import { genreList, GenreType } from '../../../../../models/genre.model';
+import { FilterUtils } from '../../../utils/filter-utils';
 
 export type GenreFilters = GenreFilter[];
 
