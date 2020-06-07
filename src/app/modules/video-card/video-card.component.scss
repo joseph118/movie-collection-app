@@ -2,7 +2,7 @@
 @import '../../../scss/mixins';
 
 $card-icon-size: 20px !default;
-$genre-font-size: 9px !default;
+$genre-font-size: 11px !default;
 
 $inner-card-font-size: 12px !default;
 $card-font-size-title: 15px !default;
@@ -17,6 +17,14 @@ $text-genre-gap-height: 4px !default;
 
   &:hover {
     transform: scale(1.025);
+
+    a .container .top-container .bottom-bar .genre {
+      border: 1.5px solid $white;
+
+      &:before {
+        animation: image-rotate 2s infinite linear;
+      }
+    }
   }
 
   a {
@@ -75,6 +83,8 @@ $text-genre-gap-height: 4px !default;
             padding: 4px;
             backdrop-filter: blur(3px);
             vertical-align: center;
+            transition: border 0.3s ease-in-out;
+            border: 1px solid transparent;
 
             .text {
               position: absolute;

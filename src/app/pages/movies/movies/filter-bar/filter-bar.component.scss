@@ -79,6 +79,10 @@ $filter-box-shadow: 0 1px 8px 2px transparentize($color8, 0.8);
           transform: scale(1.05);
           cursor: pointer;
           box-shadow: $filter-box-shadow;
+
+          .genre:before {
+            animation: image-rotate 3s infinite linear;
+          }
         }
 
         &.selected {
