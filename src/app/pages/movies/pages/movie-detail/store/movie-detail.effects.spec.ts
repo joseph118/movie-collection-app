@@ -6,7 +6,7 @@ import { MovieDetailEffects } from './movie-detail.effects';
 import { provideMockStore } from '@ngrx/store/testing';
 import * as fromActions from './movie-detail.actions';
 import { MoviesService } from '../../../../../services/movies.service';
-import { getMovieList } from '../../../store/reducer';
+import { getMovieList } from '../../movie-list/store/reducer';
 
 describe('MovieDetailEffects', () => {
   const mockResponse = [{ key: 'deadpool' }];

@@ -7,7 +7,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import * as fromActions from '../actions/filters.actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import objectContaining = jasmine.objectContaining;
-import { genreType } from '../../../../models/genre.model';
+import { genreType } from '../../../../../../models/genre.model';
 import { getFilterGenres, getFilterText } from '../reducer';
 
 describe('FiltersEffects', () => {

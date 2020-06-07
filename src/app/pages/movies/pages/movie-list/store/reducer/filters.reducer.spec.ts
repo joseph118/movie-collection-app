@@ -1,4 +1,4 @@
-import * as fromReducer from '../reducer/filters.reducer';
+import * as fromReducer from './filters.reducer';
 import * as fromActions from '../actions/filters.actions';
 
 describe('FiltersReducer', () => {

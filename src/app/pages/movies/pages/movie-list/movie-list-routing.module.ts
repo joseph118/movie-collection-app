@@ -4,7 +4,7 @@ import { MovieListComponent } from './movie-list.component';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: MovieListComponent
   }
 ];

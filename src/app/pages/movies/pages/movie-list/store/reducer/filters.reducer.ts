@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as FiltersAction from '../actions/filters.actions';
-import { GenreType } from '../../../../models/genre.model';
+import { GenreType } from '../../../../../../models/genre.model';
 
 export interface State {
   text: string;

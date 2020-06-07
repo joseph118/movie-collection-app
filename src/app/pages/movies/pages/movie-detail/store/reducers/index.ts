@@ -1,4 +1,4 @@
-import * as fromFeature from '../../../../store/reducer';
+import * as fromFeature from '../../../movie-list/store/reducer';
 import * as fromMovieDetail from './movie-detail.reducer';
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 

@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { provideMockStore } from '@ngrx/store/testing';
 import * as fromActions from '../actions/movies.actions';
 import { MoviesEffects } from './movies.effects';
-import { MoviesService } from '../../../../services/movies.service';
+import { MoviesService } from '../../../../../../services/movies.service';
 
 describe('MoviesEffects', () => {
   let actions$: Observable<any>;

@@ -1,4 +1,4 @@
-import * as fromRoot from '../../../../reducers';
+import * as fromRoot from '../../../../../../reducers';
 import * as fromFilters from './filters.reducer';
 import * as fromMovies from './movies.reducer';
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';

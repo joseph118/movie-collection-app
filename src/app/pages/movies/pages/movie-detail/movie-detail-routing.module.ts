@@ -10,11 +10,6 @@ const routes: Routes = [
   {
     path: ':id',
     component: MovieDetailComponent
-  },
-  {
-    path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
   }
 ];
 

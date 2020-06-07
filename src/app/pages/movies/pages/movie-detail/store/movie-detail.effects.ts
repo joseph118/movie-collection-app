@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MoviesService } from '../../../../../services/movies.service';
 import { getMovieDetail, MovieDetailActionType } from './movie-detail.actions';
-import { getMovieList } from '../../../store/reducer';
+import { getMovieList } from '../../movie-list/store/reducer';
 
 @Injectable()
 export class MovieDetailEffects {

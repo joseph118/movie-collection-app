@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getMovies } from '../../store/actions/movies.actions';
+import { getMovies } from './store/actions/movies.actions';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { genreList } from '../../../../models/genre.model';
 import { Movie, Movies } from '../../../../models/movie.model';
-import { FilterUtils } from '../../utils/filter-utils';
-import { getMovieList, getMovieListError, getMovieListLoading, State } from '../../store/reducer';
+import { getMovieList, getMovieListError, getMovieListLoading, State } from './store/reducer';
+import { FilterUtils } from './utils/filter-utils';
 
 @Component({
   selector: 'app-movie-list',

@@ -1,4 +1,4 @@
-import * as fromReducer from '../reducer/movies.reducer';
+import * as fromReducer from './movies.reducer';
 import * as fromActions from '../actions/movies.actions';
 
 describe('MoviesReducer', () => {

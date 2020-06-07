@@ -7,9 +7,9 @@ import { VideoCardModule } from '../../../../modules/video-card/video-card.modul
 import { FormsModule } from '@angular/forms';
 import { MovieListRoutingModule } from './movie-list-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { MoviesEffects } from '../../store/effects/movies.effects';
-import { FiltersEffects } from '../../store/effects/filters.effects';
-import { moviesFeatureKey, reducers } from '../../store/reducer';
+import { MoviesEffects } from './store/effects/movies.effects';
+import { FiltersEffects } from './store/effects/filters.effects';
+import { moviesFeatureKey, reducers } from './store/reducer';
 import { StoreModule } from '@ngrx/store';
 
 @NgModule({
