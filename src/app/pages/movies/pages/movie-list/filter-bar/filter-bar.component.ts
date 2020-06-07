@@ -33,6 +33,8 @@ export class FilterBarComponent implements OnInit, OnDestroy {
         this.genres.find(genre => genre.value === filterGenre).selected = true;
       });
     }
+
+    this.searchModel = filters.text;
   }
 
   ngOnDestroy(): void {

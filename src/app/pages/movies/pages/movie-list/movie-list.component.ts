@@ -7,6 +7,7 @@ import { genreList } from '../../../../models/genre.model';
 import { Movie, Movies } from '../../../../models/movie.model';
 import { getMovieList, getMovieListError, getMovieListLoading, State } from './store/reducer';
 import { FilterUtils } from './utils/filter-utils';
+import { storeFilters } from './store/actions/filters.actions';
 
 @Component({
   selector: 'app-movie-list',
@@ -23,6 +24,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     const filters = FilterUtils.getFilterQueryParams(this.activatedRoute, genreList);
+    this.store.dispatch(storeFilters({ payload: filters }));
     this.store.dispatch(getMovies({ payload: filters }));
     this.movies$ = this.store.select(getMovieList);
     this.loading$ = this.store.select(getMovieListLoading);
