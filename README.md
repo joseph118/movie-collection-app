@@ -60,6 +60,10 @@ Run `npm run build:production` to build the project in production configuration.
 
 The artifacts will be stored in the `dist/` directory.
 
+To test the build, a script has been defined which will serve the `dist/` directory.
+
+Execute `npm run serve:build`.
+
 ## Running unit tests
 
 Run `npm test` to execute the unit tests using [Karma](https://karma-runner.github.io).
