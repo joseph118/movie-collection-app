@@ -12,7 +12,7 @@ describe('MoviesActions', () => {
   });
 
   it('should create a getMoviesSuccess action containing a payload', () => {
-    const payload = [];
+    const payload = { movies: [], id: 0 };
     const action = Actions.getMoviesSuccess({ payload });
 
     expect(action).toEqual({
@@ -22,7 +22,7 @@ describe('MoviesActions', () => {
   });
 
   it('should create a getMoviesFailure action containing a payload', () => {
-    const payload = 'error';
+    const payload = { error: '', id: 0 };
     const action = Actions.getMoviesFailure({ payload });
 
     expect(action).toEqual({

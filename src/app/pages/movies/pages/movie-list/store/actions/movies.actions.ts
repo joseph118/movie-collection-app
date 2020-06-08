@@ -12,5 +12,11 @@ export const getMovies = createAction(
   MoviesActionType.getMovies,
   props<{ payload: { text?: string; genres?: Genres } }>()
 );
-export const getMoviesSuccess = createAction(MoviesActionType.getMoviesSuccess, props<{ payload: Movies }>());
-export const getMoviesFailure = createAction(MoviesActionType.getMoviesFailure, props<{ payload: string }>());
+export const getMoviesSuccess = createAction(
+  MoviesActionType.getMoviesSuccess,
+  props<{ payload: { movies: Movies; id: number } }>()
+);
+export const getMoviesFailure = createAction(
+  MoviesActionType.getMoviesFailure,
+  props<{ payload: { error: string; id: number } }>()
+);

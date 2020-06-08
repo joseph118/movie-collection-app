@@ -6,12 +6,14 @@ export interface State {
   error: string;
   loading: boolean;
   movies: Movies | null;
+  requestId: number;
 }
 
 export const initialState: State = {
   error: '',
   loading: false,
-  movies: null
+  movies: null,
+  requestId: 0
 };
 
 export const reducer = createReducer(
@@ -21,22 +23,21 @@ export const reducer = createReducer(
     ...state,
     error: '',
     loading: true,
-    movies: null
+    requestId: state.requestId + 1
   })),
   on(MoviesActions.getMoviesSuccess, (state, action) => ({
     ...state,
-    movies: action.payload,
-    error: '',
-    loading: false
+    movies: action.payload.movies,
+    loading: state.requestId !== action.payload.id
   })),
   on(MoviesActions.getMoviesFailure, (state, action) => ({
     ...state,
-    movies: null,
-    error: action.payload,
-    loading: false
+    error: action.payload.error,
+    loading: state.requestId !== action.payload.id
   }))
 );
 
 export const getLoading = (state: State) => state.loading;
 export const getError = (state: State) => state.error;
 export const getMovies = (state: State) => state.movies;
+export const getRequestId = (state: State) => state.requestId;

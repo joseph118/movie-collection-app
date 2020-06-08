@@ -28,6 +28,7 @@ export const selectMovieListState = createSelector(selectMoviesState, (state: Mo
 export const getMovieList = createSelector(selectMovieListState, fromMovies.getMovies);
 export const getMovieListLoading = createSelector(selectMovieListState, fromMovies.getLoading);
 export const getMovieListError = createSelector(selectMovieListState, fromMovies.getError);
+export const getMovieListRequestId = createSelector(selectMovieListState, fromMovies.getRequestId);
 
 export const getFilterText = createSelector(selectFiltersState, fromFilters.getText);
 export const getFilterGenres = createSelector(selectFiltersState, fromFilters.getGenres);

@@ -6,6 +6,8 @@ import { provideMockStore } from '@ngrx/store/testing';
 import * as fromActions from '../actions/movies.actions';
 import { MoviesEffects } from './movies.effects';
 import { MoviesService } from '../../../../../../services/movies.service';
+import { Movies } from '../../../../../../models/movie.model';
+import { getMovieListRequestId } from '../reducer';
 
 describe('MoviesEffects', () => {
   let actions$: Observable<any>;
@@ -16,7 +18,9 @@ describe('MoviesEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         MoviesEffects,
-        provideMockStore(),
+        provideMockStore({
+          selectors: [{ selector: getMovieListRequestId, value: 1 }]
+        }),
         provideMockActions(() => actions$),
         {
           provide: MoviesService,
@@ -38,7 +42,8 @@ describe('MoviesEffects', () => {
 
     effects.loadMovies$.subscribe(action => {
       expect(action.type).toBe(fromActions.MoviesActionType.getMoviesSuccess);
-      expect(action.payload).toEqual(responseData);
+      expect(action.payload.id).toBe(1);
+      expect((action.payload as { movies: Movies; id: number }).movies).toEqual(responseData);
       done();
     });
   });
