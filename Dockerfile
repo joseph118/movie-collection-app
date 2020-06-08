@@ -12,7 +12,8 @@ RUN npm run build:production
 
 FROM nginx:alpine
 
-## Add configuration to serve SPA
+## Replace configuration
+RUN rm /etc/nginx/conf.d/default.conf
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 ## Copy artifacts to destination
